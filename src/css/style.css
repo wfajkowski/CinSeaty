@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    background-color: rgb(116, 116, 116);
+}
+nav {
+  background-color: rgba(255, 255, 255, 0.233);
+}
+.page {
+  position: absolute;
+  top: 56px;
+}
+.nav-link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 17px 16px;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+.nav-link:hover {
+    border-bottom: 2px solid #fff;
+    background-color: rgba(255, 255, 255, 0.267);
+}
+.navbar-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(131, 131, 131);
+    display: flex;
+    position: sticky;
+    min-width: min-content;
+}
+.nav-flex {
+  display: flex;
+}
+.fa-video-camera {
+    color: #fff;
+    font-size: 24px;
+    padding: 14px;
+}
+p {
+    padding: 0 10px 0 15px;
+    color: #fff;
+    font-size: 20px;
+    margin: 14px 0 17px 0;
+}
+
+
+
+
+
+
+
+
+#hamburger {
+    padding: 5px;
+    width: 50px;
+    top: 10px;
+    position: absolute;
+    border: none;
+    right: 10px;
+    outline: none;
+    display: none;
+    background-color: #fff6f6;
+  }
+  
+  #hamburger:after,
+  #hamburger:before,
+  #hamburger div {
+    background-color: rgb(0, 0, 0);
+    border-radius: 4px;
+    content: "";
+    height: 2px;
+    display: block;
+    margin: 3px 0;
+    transition: all 0.3s ease-in-out;
+  }
+  #hamburger:hover:before {
+    transform: translateY(5px) rotate(135deg);
+  }
+  
+  #hamburger:hover:after {
+    transform: translateY(-5px) rotate(-135deg);
+  }
+  
+  #hamburger:hover div {
+    transform: scale(0);
+  }
+ 
+
+  @media (max-width: 700px) {
+  #hamburger {
+    display: block;
+    position: absolute;
+    height: 30px;
+    background-color: #5b4c6900;
+    width: 30px;
+  }
+  #navigation {
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+  }
+  #hamburger:after,
+  #hamburger:before,
+  #hamburger div {
+    background-color: #fff;
+  }
+  #navigation.turnOn {
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    display: block;
+    height: auto;
+    position: absolute;
+    width: 100%;
+
+  }
+  #navigation.turnOn .nav-link {
+    text-align: left;
+    display: block;
+  }
+  #navigation.turnOn .nav-link:hover {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.295);
+  }
+.nav-link {
+    display: none;
+    transition: all 1s linear;
+  }
+
+}

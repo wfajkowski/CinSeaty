@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 //MODEL
 const hallSchema = new mongoose.Schema({
+  programme_id: String,
   hall_id: Number,
   seat_row: String,
   seat: Number,

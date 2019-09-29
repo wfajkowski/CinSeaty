@@ -1,8 +1,9 @@
 import React from 'react';
+import FilmList from '../../components/FilmList/FilmList';
 
 const Home = () => {
   return(
-    <h1>Hello world</h1>
+    <FilmList />
   )
 }
 

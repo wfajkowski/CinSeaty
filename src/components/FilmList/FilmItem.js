@@ -1,4 +1,5 @@
 import React from 'react';
+import AppContext from "../../context";
 import styles from './FilmItem.module.scss';
 
 const FilmItem = ({
@@ -13,10 +14,16 @@ const FilmItem = ({
   trailer
 }) => {
   return (
-    <li className={styles.filmItem}>
-      <img src={photo} alt={title} />
-      <h4>{title}</h4>
-    </li>
+    <AppContext.Consumer>
+      {context => (
+        <li className={styles.filmItem}>
+          <div className={styles.filmCover}>
+            <img src={photo} alt={title} />
+          </div>
+          <h4>{title}</h4>
+        </li>
+      )}
+    </AppContext.Consumer>
   );
 }
 

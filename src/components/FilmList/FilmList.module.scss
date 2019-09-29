@@ -1,5 +1,7 @@
 .filmListWrapper {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   max-width: 100%;
   list-style: none;
   padding: 20px 30px;

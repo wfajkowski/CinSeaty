@@ -1,16 +1,20 @@
 import React from "react";
-import {movies} from '../../data/sampleData';
 import FilmItem from './FilmItem';
+import AppContext from "../../context";
 import styles from './FilmList.module.scss'
 
-const FilmList = () => {
-  return (
-    <ul className={styles.filmListWrapper}>
-      {movies.map(item => (
-        <FilmItem key={item._id} {...item} />
-      ))}
-    </ul>
-  );
+class FilmList extends React.Component {
+  render() {
+    return (
+      <AppContext.Consumer>
+        {context => (<ul className={styles.filmListWrapper}>
+          {context.movies.map(item => (
+            <FilmItem key={item._id} {...item} />
+          ))}
+        </ul>)}
+      </AppContext.Consumer>
+    );
+  }
 };
 
 export default FilmList;

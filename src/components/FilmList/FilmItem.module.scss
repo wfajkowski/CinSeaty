@@ -2,10 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
   padding: 0 30px;
-  img {
-    display: block;
-    max-width: 200px;
+  .filmCover{
+    position: relative;
+    width: 200px;
+    img {
+      display: block;
+      width: 100%;
+    }
   }
 }

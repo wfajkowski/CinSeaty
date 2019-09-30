@@ -2,7 +2,7 @@ import React from 'react';
 import "./Content.css";
 
 let title = "(Nie)znajomi";
-let trailer = "trailer";
+let trailer = "https://www.youtube.com/embed/YypFzpm6F18";
 let duration = 104;
 let genre = "Komedia";
 let adult = "Nie";
@@ -18,7 +18,7 @@ class PopUp extends React.Component {
             <div className = "content">
                 <div className = "title"><h1>{title}</h1></div>
                 <div className = "close">x</div>
-                <div className = "trailer"><iframe width="90%" height="100%" src="https://www.youtube.com/embed/YypFzpm6F18" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe></div>
+                <div className = "trailer"><iframe width="90%" height="100%" src={trailer} frameborder="0" allow="fullscreen"></iframe></div>
                 <div className = "lead">{lead}</div>
                 <div className = "description">{description}</div>
                 <div className = "reservation">

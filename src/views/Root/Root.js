@@ -8,6 +8,7 @@ import About from '../About/About';
 import Contact from '../Contact/Contact';
 import Navbar from "../../components/Navbar/Navbar";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
+import PopUp from "../../components/Pop-up-site/Content";
 
 
 class Root extends React.Component {
@@ -49,6 +50,7 @@ class Root extends React.Component {
             <Route path="/contact" component={Contact} />
           </Switch>
           {isMovieDetailsOpen && <MovieDetails activeMovie={this.state.activeMovie}/>}
+          <PopUp />
         </AppContext.Provider>
       </BrowserRouter>
     );

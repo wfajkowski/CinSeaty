@@ -22,7 +22,7 @@ router.get("/:movie_id", async (req, res) => {
 
 //Add a new programme, movie id should be passed
 router.post("/", async (req, res) => {
-  programme = new Programme(req.body);
+  let programme = new Programme(req.body);
   programme = await programme.save();
 
   res.send(programme);

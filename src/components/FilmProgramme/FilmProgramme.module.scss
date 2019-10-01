@@ -1,0 +1,18 @@
+.filmProgramme {
+  display: flex;
+  .hours {
+    display: flex;
+    align-items: center;
+    ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      li {
+        border: 2px solid black;
+        padding: 5px 7px;
+        margin: 20px;
+      }
+    }
+  }
+}
+

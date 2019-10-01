@@ -1,5 +1,5 @@
 import React from "react";
-// import styles from "./CarouselItem.module.scss";
+import "./CarouselItem.css";
 
 class CarouselItem extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class CarouselItem extends React.Component {
     this.setState({
       height: Math.round(this.itemRef.current.clientWidth * 1.5)
     });
-    console.log('bla', this.itemRef.current.clientWidth);
+    // console.log('bla', this.itemRef.current.clientWidth);
   }
 
   handleImageLoaded() {
@@ -33,9 +33,9 @@ class CarouselItem extends React.Component {
   }
 
   render() {
-    console.log(this.itemRef);
-    console.log(this.state.loaded);
-    console.log(this.state.height);
+    // console.log(this.itemRef);
+    // console.log(this.state.loaded);
+    // console.log(this.state.height);
     return (
       <>
         <div

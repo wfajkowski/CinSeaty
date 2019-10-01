@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const hallSchema = new mongoose.Schema({
   programme_id: String,
   hall_id: Number,
+  ticket_id: String,
   seat_row: String,
   seat: Number,
   premium_type: Boolean,

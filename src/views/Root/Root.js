@@ -3,18 +3,34 @@ import axios from "axios";
 import "./index.css";
 import AppContext from "../../context";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Home from '../Home/Home';
-import About from '../About/About';
-import Contact from '../Contact/Contact';
+import Home from "../Home/Home";
+import About from "../About/About";
+import Contact from "../Contact/Contact";
+import Reservation from "../Reservation/Reservation";
 import Navbar from "../../components/Navbar/Navbar";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
-
 
 class Root extends React.Component {
   state = {
     movies: [],
     activeMovie: null,
-    isMovieDetailsOpen: false
+    isMovieDetailsOpen: false,
+    reservation: {
+      movie_id: "5d8f5faf4ccc7f31a0536c6d",
+      place: [{
+        seat_id: "5d90948a038095353c62bd72",
+        ticket_id: "5d93b090c32d0709bc2c091a"
+      }, {
+        seat_id: "5d90948a038095353c62bd73",
+        ticket_id: "5d93b09fc32d0709bc2c091b"
+      }],
+      reservation_nr: null,
+      name: null,
+      surname: null,
+      email: null,
+      telephone: null,
+      active: false
+    }
   };
 
   componentDidMount() {
@@ -38,7 +54,7 @@ class Root extends React.Component {
 
   render() {
     const { isMovieDetailsOpen } = this.state;
-    const contextElements = {...this.state};
+    const contextElements = { ...this.state };
     return (
       <BrowserRouter>
         <AppContext.Provider value={contextElements}>
@@ -47,8 +63,11 @@ class Root extends React.Component {
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
+            <Route path="/reservation" component={Reservation} />
           </Switch>
-          {isMovieDetailsOpen && <MovieDetails activeMovie={this.state.activeMovie}/>}
+          {isMovieDetailsOpen && (
+            <MovieDetails activeMovie={this.state.activeMovie} />
+          )}
         </AppContext.Provider>
       </BrowserRouter>
     );

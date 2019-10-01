@@ -45,6 +45,11 @@ class Navbar extends React.Component {
             </NavLink>
           </li>
           <li>
+            <NavLink activeClassName="active-nav-link" className="nav-link" exact to="/reservation">
+              Reservation
+            </NavLink>
+          </li>
+          <li>
             <NavLink activeClassName="active-nav-link" className="nav-link" to="/about">
               About
             </NavLink>

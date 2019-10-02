@@ -4,7 +4,6 @@ import "./index.css";
 import AppContext from "../../context";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "../Home/Home";
-import About from "../About/About";
 import Contact from "../Contact/Contact";
 import Reservation from "../Reservation/Reservation";
 import Navbar from "../../components/Navbar/Navbar";
@@ -77,10 +76,9 @@ class Root extends React.Component {
     return (
       <BrowserRouter>
         <AppContext.Provider value={contextElements}>
-          <Navbar />
+          <Navbar value={this.state.movies}/>
           <Switch>
             <Route exact path="/" render={() => <Home openMovieDetails={this.openMovieDetails} closeMovieDetails={this.closeMovieDetails} activeMovie={this.state.activeMovie}/>} />
-            <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
             <Route path="/reservation" component={Reservation} />
           </Switch>

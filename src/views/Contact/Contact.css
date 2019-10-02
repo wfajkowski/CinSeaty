@@ -1,0 +1,79 @@
+
+.test-mailing {
+    width: 50%;
+    display: block;
+    padding: 0;
+    margin: 10% auto;
+    text-align: center;
+    align-content: center
+}
+
+.test-mailing h1 {
+  color: #fff;
+  font-size: 40px;
+}
+.btn--submitt {
+    margin: 20px auto;
+    justify-content: center;
+    display: block;
+    -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  height: 30px;
+    width: 100px;
+}
+.btn--submitt:hover {
+    background-color: rgb(61, 168, 175);
+}
+.btn--submitt:focus {
+    outline: none;
+}
+
+textarea {
+    padding: 5px 10px;
+    box-sizing: border-box;
+    margin: 5px 0;
+    resize: none;
+}
+textarea:focus {
+    outline: none;
+}
+.test-mailing p {
+    text-align: left;
+    font-size: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.bg {
+    animation: slide 10s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #2b2f35 40%, #8a8a8a 0%);
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+  }
+.bg2 {
+    animation-direction:alternate-reverse;
+    animation-duration:14s;
+  }
+.bg3 {
+    animation-duration:18s;
+  }
+  @keyframes slide {
+    0% {
+      transform:translateX(-25%);
+    }
+    100% {
+      transform:translateX(25%);
+    }
+  }
+
+  @media (max-width: 700px) {
+    .test-mailing{
+      width: 70%;
+    }
+  }

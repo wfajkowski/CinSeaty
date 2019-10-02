@@ -17,7 +17,7 @@ class PopUp extends React.Component {
         <div className = "background">
             <div className = "content">
                 <div className = "title"><h1>{title}</h1></div>
-                <div className = "close">x</div>
+                <div className = "close" onClick = {() => {(document.querySelector('#root').removeChild(document.querySelector('.background')))}}>x</div>
                 <div className = "trailer"><iframe width="90%" height="100%" src={trailer} frameborder="0" allow="fullscreen"></iframe></div>
                 <div className = "lead">{lead}</div>
                 <div className = "description">{description}</div>

@@ -4,11 +4,14 @@ import AppContext from "../../context";
 import styles from './FilmList.module.scss'
 
 class FilmList extends React.Component {
+  
+  
+  
   render() {
     return (
       <AppContext.Consumer>
-        {context => (<ul className={styles.filmListWrapper}>
-          {context.movies.map(item => (
+        {(context) => (<ul className={styles.filmListWrapper} onClick = {context.activeMovie}>
+          {context.movies.map((item) => (
             <FilmItem key={item._id} {...item} />
           ))}
         </ul>)}

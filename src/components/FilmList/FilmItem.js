@@ -1,8 +1,10 @@
 import React from 'react';
 import AppContext from "../../context";
 import styles from './FilmItem.module.scss';
+import PopUp from '../Pop-up-site/Content';
+import { tsPropertySignature } from '@babel/types';
 
-const FilmItem = ({
+const FilmItem = function ({
   photo,
   title,
   genre,
@@ -12,12 +14,12 @@ const FilmItem = ({
   premiere,
   production,
   trailer
-}) => {
+}) {
   return (
     <AppContext.Consumer>
-      {context => (
-        <li className={styles.filmItem}>
-          <div className={styles.filmCover}>
+      {(context) => (
+        <li className={styles.filmItem} onClick = {context.openDetails} >
+          <div className={styles.filmCover} >
             <img src={photo} alt={title} />
           </div>
           <h4>{title}</h4>

@@ -27,7 +27,11 @@ class FilmItem extends React.Component {
         {context => (
           <li className={styles.filmItem}>
             <div className={styles.filmCover}>
-              <img src={this.props.photo} alt={this.props.title} />
+              <img
+                src={this.props.photo}
+                alt={this.props.title}
+                onClick={context.openDetails}
+              />
             </div>
             <div className={styles.filmDetails}>
               <h4>{this.props.title}</h4>

@@ -54,7 +54,11 @@ class Root extends React.Component {
 
   render() {
     const { isMovieDetailsOpen } = this.state;
-    const contextElements = { ...this.state };
+    const contextElements = {
+      ...this.state,
+      openDetails: this.openMovieDetails,
+      closeDetails: this.closeMovieDetails
+    };
     return (
       <BrowserRouter>
         <AppContext.Provider value={contextElements}>

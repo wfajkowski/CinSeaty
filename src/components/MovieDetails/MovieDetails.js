@@ -8,6 +8,12 @@ const MovieDetails = () => {
       {context => (
         <div className={styles.movieDetailsBackground}>
           <p>film</p>
+          <span
+            className={styles.closeModal}
+            onClick={context.closeDetails}
+          >
+            X
+          </span>
         </div>
       )}
     </AppContext.Consumer>

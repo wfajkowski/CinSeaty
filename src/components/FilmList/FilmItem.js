@@ -25,7 +25,7 @@ class FilmItem extends React.Component {
     return (
       <AppContext.Consumer>
         {context => (
-          <li className={styles.filmItem}>
+          <li className={styles.filmItem} onClick = {context.openDetails}>
             <div className={styles.filmCover}>
               <img
                 src={this.props.photo}

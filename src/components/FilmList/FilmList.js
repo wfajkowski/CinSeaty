@@ -5,13 +5,16 @@ import styles from "./FilmList.module.scss";
 import AvailableDates from "../AvailableDates/AvailableDates";
 
 class FilmList extends React.Component {
+  
+  
+  
   render() {
     return (
       <AppContext.Consumer>
         {context => (
           <>
             <AvailableDates />
-            <ul className={styles.filmListWrapper}>
+            <ul className={styles.filmListWrapper} onClick = {context.activeMovie}>
               {context.movies.map(item => (
                 <FilmItem key={item._id} {...item} />
               ))}

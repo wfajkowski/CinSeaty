@@ -9,6 +9,7 @@ import Contact from "../Contact/Contact";
 import Reservation from "../Reservation/Reservation";
 import Navbar from "../../components/Navbar/Navbar";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
+//import PopUp from "../../components/Pop-up-site/Content";
 
 class Root extends React.Component {
   state = {
@@ -38,7 +39,19 @@ class Root extends React.Component {
       console.log(res.data);
       this.setState({ movies: res.data });
     });
-  }
+  };
+  
+  activeMovie = (e) => {
+    function check(element) {
+      if (element.title == e.target.textContent || element.title == e.target.alt) {
+        return element;
+      }
+    };
+    let x = this.state.movies.find(check);
+    this.setState({
+      activeMovie: x
+    });
+  };
 
   openMovieDetails = () => {
     this.setState({
@@ -56,22 +69,22 @@ class Root extends React.Component {
     const { isMovieDetailsOpen } = this.state;
     const contextElements = {
       ...this.state,
-      openDetails: this.openMovieDetails,
-      closeDetails: this.closeMovieDetails
+    openDetails: this.openMovieDetails,
+    closeDetails: this.closeMovieDetails,
+    activeMovie: this.activeMovie
     };
+    console.log(contextElements);
     return (
       <BrowserRouter>
         <AppContext.Provider value={contextElements}>
           <Navbar />
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" render={() => <Home openMovieDetails={this.openMovieDetails} closeMovieDetails={this.closeMovieDetails} activeMovie={this.state.activeMovie}/>} />
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
             <Route path="/reservation" component={Reservation} />
           </Switch>
-          {isMovieDetailsOpen && (
-            <MovieDetails activeMovie={this.state.activeMovie} />
-          )}
+          {isMovieDetailsOpen && <MovieDetails openMovieDetails={this.openMovieDetails} closeMovieDetails={this.closeMovieDetails} activeMovie={this.state.activeMovie}/>}
         </AppContext.Provider>
       </BrowserRouter>
     );

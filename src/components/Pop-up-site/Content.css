@@ -1,0 +1,36 @@
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100vw;
+    height: 100vh;
+}
+.content {
+    padding: 10px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
+    width: 100vw;
+    width: 70%;
+    height: 70%;
+    top: 15%;
+    left: 15%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.close {
+    justify-self: flex-end;
+}
+.trailer {
+    grid-row: span 3;
+}
+.reservation {
+    display: grid;
+    text-align: center;
+    grid-row: span 2;
+}
+.hours {
+    justify-self: flex-start;
+}

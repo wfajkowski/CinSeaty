@@ -43,7 +43,7 @@ class Root extends React.Component {
   
   activeMovie = (e) => {
     function check(element) {
-      if (element.title == e.target.textContent || element.title == e.target.alt) {
+      if (e.target.textContent === element.title || e.target.alt === element.title) {
         return element;
       }
     };

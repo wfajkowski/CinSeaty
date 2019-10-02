@@ -18,15 +18,14 @@ class FilmItem extends React.Component {
       .then(res => {
         this.setState({ programme: res.data });
       });
-  }
+  };
 
   render() {
-    // console.log(this.state.programme);
     return (
       <AppContext.Consumer>
         {context => (
-          <li className={styles.filmItem} onClick = {context.openDetails}>
-            <div className={styles.filmCover}>
+          <li className={styles.filmItem} >
+            <div className={styles.filmCover} onClick = {context.activeMovie} >
               <img
                 src={this.props.photo}
                 alt={this.props.title}

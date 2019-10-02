@@ -14,7 +14,7 @@ class FilmList extends React.Component {
         {context => (
           <>
             <AvailableDates />
-            <ul className={styles.filmListWrapper} onClick = {context.activeMovie}>
+            <ul className={styles.filmListWrapper} >
               {context.movies.map(item => (
                 <FilmItem key={item._id} {...item} />
               ))}

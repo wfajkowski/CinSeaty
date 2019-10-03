@@ -10,15 +10,15 @@ router.get("/", async (req, res) => {
   res.send(tickets);
 });
 
-//Search by reservation id and returns info about tickets
-router.get("/:reservation_id", async (req, res) => {
+//Search by id and returns info about tickets
+router.get("/:id", async (req, res) => {
   const tickets = await Ticket.find({
-    reservation_id: req.params.reservation_id
+    _id: req.params.id
   });
   if (!tickets)
     return res
       .status(404)
-      .send("There is no tickets with this reservation id in DB.");
+      .send("There is no tickets with this id in DB.");
   res.send(tickets);
 });
 

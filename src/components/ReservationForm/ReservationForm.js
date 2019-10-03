@@ -1,68 +1,213 @@
 import React from "react";
+import axios from "axios";
 import AppContext from "../../context";
 import styles from "./ReservationForm.module.scss";
+import moment from "moment";
 
 class ReservationForm extends React.Component {
-  reservationGenerator = ()=> Math.random().toString(36).substr(2, 10).toUpperCase();
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: null,
+      time: null,
+      datetime: null,
+      hall: null,
+      title: null,
+      seats: [],
+      name: null,
+      surname: null,
+      email: null,
+      telephone: null,
+      programme_id: null,
+      reservation: null,
+      active: false,
+      total: null
+    };
+  }
+
+  async componentDidMount() {
+    const programmeId = this.props.reservation.reservation.programme_id;
+    let movieId;
+    const reservation = Math.random().toString(36).substr(2, 10).toUpperCase();
+    this.setState({ reservation });
+
+    await axios
+      .get("http://localhost:3001/api/programmes/")
+      .then(res => {
+        const programme = (res.data).filter(el => {
+          return el._id === programmeId;
+        })
+        movieId = programme[0].movie_id;
+        const dateValue = programme[0].time;
+        const date = moment(dateValue).format("DD-MM-YYYY")
+        const time = moment(dateValue).format("HH:mm")
+
+        this.setState({
+          date: date,
+          time: time,
+          programme_id: programmeId,
+          datetime: dateValue
+        });
+        return res.data
+      })
+
+    await axios
+      .get(`http://localhost:3001/api/movies/${movieId}`)
+      .then(res => {
+        this.setState({ title: res.data.title });
+      })
+
+    const getSeats = () => {
+      const seats = this.props.reservation.reservation.seats;
+      let total = 0;
+      seats.forEach(seat => {
+        const seatId = seat.seat_id;
+
+        axios
+          .get("http://localhost:3001/api/halls/")
+          .then(res => {
+            const seat = (res.data).filter(el => {
+              return el._id === seatId;
+            })
+            const fullSeat = `${seat[0].seat_row}${seat[0].seat}`
+            this.setState({ hall: seat[0].hall_id });
+            return fullSeat;
+          })
+          .then((fullSeat) => {
+            axios
+              .get(`http://localhost:3001/api/tickets/${seat.ticket_id}`)
+              .then(res => {
+                const ticket = (res.data[0]);
+                total += ticket.price;
+
+                this.setState({
+                  seats: [...this.state.seats, {
+                    seat_id: seatId,
+                    ticket_id: ticket._id,
+                    seat: fullSeat,
+                    type: ticket.type,
+                    price: `${(ticket.price).toFixed(2).replace('.', ',')} PLN`,
+                    status: "taken"
+                  }]
+                });
+                this.setState({ total });
+              })
+          })
+
+      })
+    }
+    getSeats()
+  };
+
+  onChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("http://localhost:3001/api/reservations", {
+        programme_id: this.state.programme_id,
+        hall_id: this.state.hall,
+        seats: this.state.seats,
+        reservation_nr: this.state.reservation,
+        title: this.state.title,
+        date: this.state.date,
+        time: this.state.time,
+        datetime: this.state.datetime,
+        name: this.state.name,
+        surname: this.state.surname,
+        email: this.state.email,
+        telephone: this.state.telephone,
+        active: true
+      })
+      .then(response => {
+        this.setState({ active: true });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  }
+
 
   render() {
-    return (
-      <AppContext.Consumer>
-        {context => (
-          <div className={styles.formContainer}>
-            <div className={styles.reservationInfoDiv}>
-              <h3 className={styles.formHeader}>Reservation summary</h3>
-              <p>Movie Id: {context.reservation.movie_id}</p>
-              <p>Place 1 Id: {context.reservation.place[0].seat_id}</p>
-              <p>Ticket 1 Id: {context.reservation.place[0].ticket_id}</p>
-              <p>Place 2 Id: {context.reservation.place[1].seat_id}</p>
-              <p>Ticket 2 Id: {context.reservation.place[1].ticket_id}</p>
-              <p>Reservation No: {this.reservationGenerator()}</p>
-            </div>
-            <div className={styles.reservationFormDiv}>
-              <h3 className={styles.formHeader}>Please fill you data</h3>
-              <form id="user-info" className={styles.reservationForm}>
-                <input
-                  type="text"
-                  className={styles.formItem}
-                  id="item"
-                  placeholder="Name"
-                  required
-                />
-                <input
-                  type="text"
-                  className={styles.formItem}
-                  id="item"
-                  placeholder="Surname"
-                  required
-                />
-                <input
-                  type="text"
-                  className={styles.formItem}
-                  id="item"
-                  placeholder="Email"
-                  required
-                />
-                <input
-                  type="text"
-                  className={styles.formItem}
-                  id="item"
-                  placeholder="Telephone"
-                  required
-                />
-                <button
-                  type="submit"
-                  className={styles.formItem}
-                  value="confirm"
-                  id="confirm-button"
-                >
-                  <i className="">Confirm</i>
-                </button>
-              </form>
-            </div>
+    if (!this.state.active) {
+      return (
+        <div className={styles.formContainer}>
+          <div className={styles.reservationInfoDiv}>
+            <h3 className={styles.formHeader}>Reservation summary</h3>
+            <p>Title: {this.state.title}</p>
+            <p>Screening date: {this.state.date}</p>
+            <p>Screening time: {this.state.time}</p>
+            <p>Cinema hall: {this.state.hall}</p>
+            <p>Tickets: {(this.state.seats).map(function (d, idx) {
+              return (<li key={idx} className={styles.seatElement}>Place: {d.seat}, {d.type}, {d.price}</li>)
+            })}</p>
           </div>
-        )}
-      </AppContext.Consumer>
+          <div className={styles.reservationFormDiv}>
+            <h3 className={styles.formHeader}>Please fill you data</h3>
+            <form id="user-info" className={styles.reservationForm} onSubmit={this.onSubmit.bind(this)}>
+              <input
+                type="text"
+                className={styles.formItem}
+                id="item"
+                placeholder="Name"
+                name="name"
+                required
+                onChange={this.onChange.bind(this)}
+              />
+              <input
+                type="text"
+                className={styles.formItem}
+                id="item"
+                placeholder="Surname"
+                name="surname"
+                required
+                onChange={this.onChange.bind(this)}
+              />
+              <input
+                type="text"
+                className={styles.formItem}
+                id="item"
+                placeholder="Email"
+                name="email"
+                required
+                onChange={this.onChange.bind(this)}
+              />
+              <input
+                type="text"
+                className={styles.formItem}
+                id="item"
+                placeholder="Telephone"
+                name="telephone"
+                required
+                onChange={this.onChange.bind(this)}
+              />
+              <button
+                type="submit"
+                className={styles.formItem}
+                value="confirm"
+                id="confirm-button"
+              >
+                <i className="">Confirm</i>
+              </button>
+            </form>
+          </div>
+        </div>
+      )
+    };
+
+    return (
+      <div className={styles.formContainer}>
+        <p>Thank You for the reservation.</p>
+        <p>Your Reservation Number is:  {this.state.reservation}</p>
+        <p>Please show it before the Movie in the ticket office.</p>
+        <p>Total price: {`${(this.state.total).toFixed(2).replace('.', ',')} PLN`}</p>
+      </div>
     );
   }
 }

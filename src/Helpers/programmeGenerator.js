@@ -40,7 +40,8 @@ async function generateProgrammes() {
       axios
         .post("http://localhost:3001/api/programmes", {
           movie_id: `${_.sample(moviesIds)}`,
-          time: `${day.format(`YYYY-MM-DDTHH:mm:ss`)}`
+          time: `${day.format(`YYYY-MM-DDTHH:mm:ss`)}`,
+          hall_id: 1
         })
         .then(function(response) {
           //   console.log(response);

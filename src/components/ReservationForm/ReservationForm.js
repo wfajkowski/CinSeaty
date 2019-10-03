@@ -6,6 +6,7 @@ class ReservationForm extends React.Component {
   reservationGenerator = ()=> Math.random().toString(36).substr(2, 10).toUpperCase();
 
   render() {
+    console.log(this.props);
     return (
       <AppContext.Consumer>
         {context => (

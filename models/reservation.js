@@ -3,9 +3,13 @@ const mongoose = require("mongoose");
 //MODEL
 const reservationSchema = new mongoose.Schema({
   programme_id: String,
-  seat_id: String,
-  ticket_id: Object,
+  hall_id: String,
+  seats: Object,
   reservation_nr: String,
+  title: String,
+  date: String,
+  time: String,
+  datetime: Date,
   name: {
     type: String,
     minlength: 3,

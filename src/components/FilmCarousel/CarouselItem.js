@@ -2,35 +2,35 @@ import React from "react";
 import "./CarouselItem.css";
 
 class CarouselItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.itemRef = React.createRef();
-    this.state = {
-      loaded: false,
-      height: null
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.itemRef = React.createRef();
+  //   this.state = {
+  //     loaded: false,
+  //     height: null
+  //   };
+  // }
 
-  componentDidMount() {
-    if (this.state.height === null) this.handleImageLoaded();
-    window.addEventListener("resize", this.handleWindowResize.bind(this));
-  }
+  // componentDidMount() {
+  //   if (this.state.height === null) this.handleImageLoaded();
+  //   window.addEventListener("resize", this.handleWindowResize.bind(this));
+  // }
 
-  handleWindowResize() {
-    this.setState({
-      height: Math.round(this.itemRef.current.clientWidth * 1.5)
-    });
-    // console.log('bla', this.itemRef.current.clientWidth);
-  }
+  // handleWindowResize() {
+  //   this.setState({
+  //     height: Math.round(this.itemRef.current.clientWidth * 1.5)
+  //   });
+  //   // console.log('bla', this.itemRef.current.clientWidth);
+  // }
 
-  handleImageLoaded() {
-    if (!this.state.loaded) {
-      this.setState({
-        loaded: true,
-        height: Math.round(this.itemRef.current.clientWidth * 1.5)
-      });
-    }
-  }
+  // handleImageLoaded() {
+  //   if (!this.state.loaded) {
+  //     this.setState({
+  //       loaded: true,
+  //       height: Math.round(this.itemRef.current.clientWidth * 1.5)
+  //     });
+  //   }
+  // }
 
   render() {
     // console.log(this.itemRef);
@@ -38,7 +38,7 @@ class CarouselItem extends React.Component {
     // console.log(this.state.height);
     return (
       <>
-        <div
+        {/* <div
           ref={this.itemRef}
           style={{
             backgroundImage: `url(${this.props.photo})`,
@@ -46,7 +46,8 @@ class CarouselItem extends React.Component {
             backgroundSize: "cover"
           }}
           onLoad={this.handleImageLoaded.bind(this)}
-        ></div>
+        ></div> */}
+        <img src={this.props.photo} alt={'bla'} />
       </>
     );
   }

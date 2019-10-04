@@ -6,7 +6,7 @@ const Home = (props) => {
   return (
     <div className="ui container">
       <FilmCarousel />
-      <FilmList openMovieDetails = {props.openMovieDetails} closeMovieDetails = {props.closeMovieDetails} activeMovie = {props.activeMovie}/>
+      <FilmList openMovieDetails = {props.openMovieDetails} closeMovieDetails = {props.closeMovieDetails} activeMovie = {props.activeMovie} activeDate={props.activeDate}/>
     </div>
   );
 }

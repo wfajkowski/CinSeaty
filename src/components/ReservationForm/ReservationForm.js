@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import AppContext from "../../context";
+import QRCode from 'qrcode.react';
 import styles from "./ReservationForm.module.scss";
 import moment from "moment";
 
@@ -95,8 +95,8 @@ class ReservationForm extends React.Component {
           })
 
       })
-    }
-    getSeats()
+    };
+    getSeats();
   };
 
   onChange(e) {
@@ -197,16 +197,35 @@ class ReservationForm extends React.Component {
               </button>
             </form>
           </div>
-        </div>
+        </div >
       )
     };
 
     return (
       <div className={styles.formContainer}>
         <p>Thank You for the reservation.</p>
+
+        <p>Title: {this.state.title}</p>
+        <p>Screening date: {this.state.date}</p>
+        <p>Screening time: {this.state.time}</p>
+        <p>Cinema hall: {this.state.hall}</p>
+        <p>Tickets: {(this.state.seats).map(function (d, idx) {
+          return (<li key={idx} className={styles.seatElement}>Place: {d.seat}, {d.type}, {d.price}</li>)
+        })}</p>
+        <p>Total price: {`${(this.state.total).toFixed(2).replace('.', ',')} PLN`}</p>
         <p>Your Reservation Number is:  {this.state.reservation}</p>
         <p>Please show it before the Movie in the ticket office.</p>
-        <p>Total price: {`${(this.state.total).toFixed(2).replace('.', ',')} PLN`}</p>
+        <div>
+          <QRCode
+            value={String(this.state.reservation)}
+            size={128}
+            bgColor={"#ffffff"}
+            fgColor={"#000000"}
+            level={"L"}
+            includeMargin={false}
+            renderAs={"svg"}
+          />
+        </div>
       </div>
     );
   }

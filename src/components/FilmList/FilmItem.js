@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Moment from "moment";
 import AppContext from "../../context";
 import styles from "./FilmItem.module.scss";
 import FilmProgramme from "../FilmProgramme/FilmProgramme";
@@ -21,10 +22,26 @@ class FilmItem extends React.Component {
   };
 
   render() {
+    let shown = null;
+    for(let i = 0; i < this.state.programme.length; i++){
+      // console.log(Moment(this.state.programme[i].time).format("D.M"));
+      if(Moment(this.state.programme[i].time).format("D.M") === this.props.date){
+        shown = true;
+      }
+    }
+    // if(this.state.programme){
+    //   shown = true;
+    // }
+
+    // console.log('FilmItem', this.state.programme);
+    // console.log('FilmItem', this.props.date);
+    // console.log(shown, 'fffffff');
+
     return (
       <AppContext.Consumer>
         {context => (
-          <li className={styles.filmItem} >
+          shown ?
+          (<li className={styles.filmItem} >
             <div className={styles.filmCover} onClick = {context.activeMovie} >
               <img
                 src={this.props.photo}
@@ -36,7 +53,7 @@ class FilmItem extends React.Component {
               <h4>{this.props.title}</h4>
               <FilmProgramme programme={this.state.programme} />
             </div>
-          </li>
+          </li>) : null
         )}
       </AppContext.Consumer>
     );

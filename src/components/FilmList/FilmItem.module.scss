@@ -1,20 +1,31 @@
 .filmItem {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-areas: 'movie-cover details';
+  grid-template-columns: 1fr 4fr;
   align-items: center;
   padding: 20px 30px;
   .filmCover{
+    grid-area: movie-cover;
     position: relative;
-    width: 200px;
+    // width: 200px;
     img {
       display: block;
       width: 100%;
     }
   }
   .filmDetails {
+    grid-area: details;
     padding: 10px;
     h4 {
       margin-left: 17px;
     }
+  }
+}
+
+@media (max-width: 600px) {
+  .filmItem {
+    grid-template-areas: 
+      'movie-cover movie-cover'
+      'details details';
   }
 }

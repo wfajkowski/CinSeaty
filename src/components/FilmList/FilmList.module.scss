@@ -1,7 +1,7 @@
 .filmListWrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: center;
   max-width: 100%;
   list-style: none;

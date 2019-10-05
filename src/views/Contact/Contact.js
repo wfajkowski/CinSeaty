@@ -20,7 +20,7 @@ class Contact extends React.Component {
   	<form className="test-mailing">
     	<h1>Contact us !</h1>
     	<div>
-      <p>Name</p>
+      <p>Name*</p>
       <textarea 
         style={{width: '100%', height: '30px'}}
         placeholder="Put your name here"
@@ -28,7 +28,7 @@ class Contact extends React.Component {
         maxLength='50'
         onChange={this.nameChange}
       />
-      <p>Email</p>
+      <p>Email*</p>
       <textarea 
         style={{width: '100%', height: '30px'}}
         placeholder="Your email contact"
@@ -37,7 +37,7 @@ class Contact extends React.Component {
         maxLength='50'
         onChange={this.emailChange}
       /> 
-      <p>Text</p>
+      <p>Text*</p>
       <textarea
         id="test-mailing"
         name="test-mailing"
@@ -47,6 +47,7 @@ class Contact extends React.Component {
         value={this.state.feedback}
         style={{width: '100%', height: '150px'}}
       	/>
+        <p>*required</p>
         <input type="button" value="Submit" className="btn btn--submitt" onClick={this.handleSubmit} />
     	</div>
   	</form>
@@ -70,10 +71,16 @@ class Contact extends React.Component {
     }
   
     sendFeedback (templateId, variables) {
+      if(this.state.feedback&&this.state.name&&this.state.email){
     window.emailjs.send('gmail', templateId, variables)
       .then(res =>{ alert('Email successfully sent!')
       this.setState({feedback: '', name: '', email: ''})})
       .catch(err =>  alert(`Unfortunately there was a problem with sending an email probably thats the problem: ${err.text}`))
+    } else {
+        setTimeout(function(){
+          alert('Please fill all the fields')
+        }, 1000);
+    }
     }
 }
 export default Contact;

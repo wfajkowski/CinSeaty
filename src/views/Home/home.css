@@ -1,0 +1,62 @@
+.bg {
+    animation: slide 10s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #3fbac2 60%, #d3d4d8 0%);
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+  }
+  .bg2 {
+    animation-direction:alternate-reverse;
+    animation-duration:14s;
+  }
+  .bg3 {
+    animation-duration:18s;
+  }
+.FilmItem_filmItem__1_1nH {
+  border: 2px solid white;
+  border-radius: 30px;
+  margin: 15px;
+  background-color: #4d606eda;
+}
+.FilmItem_filmCover__t9sO8 img{
+  border-radius: 20px;
+  height: 90%;
+}
+.FilmItem_filmCover__t9sO8 img:hover{
+  cursor: pointer;
+}
+.FilmItem_filmDetails__2ikEK h4{
+  color: #fff;
+  font-size: 20px;
+}
+.FilmItem_filmDetails__2ikEK{
+  padding: 0 !important;
+  height: 100%;
+}
+.FilmProgramme_filmProgramme__uh8xF {
+  position: relative;
+}
+.FilmProgramme_hours__VGPBd ul{
+ padding: 30px 0 0 0 ;
+}
+.FilmProgramme_hours__VGPBd li:hover{
+  background:-webkit-linear-gradient(top, rgb(136, 175, 177) 0%,rgb(67, 181, 189) 100%);;
+  transition: 1s;
+}
+.FilmProgramme_hours__VGPBd li{
+  transition: 1s;
+  border: 2px solid #fff !important;
+}
+.FilmProgramme_hours__VGPBd li p{
+  padding:0 12px !important;
+  margin: 6px auto 9px auto !important;
+}
+.FilmProgramme_hours__VGPBd > p{
+  position: absolute;
+  left: 2px;
+  top: 0;
+}

@@ -8,8 +8,11 @@ import ReservationTickets from '../ReservationTickets/ReservationTickets'
 class Theather extends React.Component {
   state = {
     reservedSeats: [],
-    next: false
+    next: false,
+    halls: [],
+    seats: []
   }
+
 
   printRows = () => {
     const rows = ["A", "B", "C", "D", "E", "F", "G", "I", "J"];
@@ -18,9 +21,17 @@ class Theather extends React.Component {
       row[0] = <Seat number={value} className="letter" />;
       for (let i = 1; i < 16; i++) {
         let number = i < 8 ? i : i - 1;
-        row[i] = <Seat number={number} coords={value + number} />;
-        if (this.state.reservedSeats.includes(value + number)) row[i] = <Seat number={number} coords={value + number} className="taken" />;
-        if (i == 8) {
+        let id
+        this.state.halls.forEach(item => {
+            if (item.seat_row === value && item.seat === number) {
+                id = item._id
+            }
+        })
+        row[i] = <Seat number={number} coords={value + number} id={id} idsGetter={this.idsGetter} />;
+        if (this.state.reservedSeats.includes(value + number)) {
+            row[i] = <Seat number={number} coords={value + number} className="taken" />;
+        }
+        if (i === 8) {
           row[i] = <br />;
         }
       }
@@ -37,14 +48,21 @@ class Theather extends React.Component {
           this.setState({ reservedSeats: [...this.state.reservedSeats, item.seat] });
         });
       });
-      //   console.log(this.state.reservedSeats)
-
+      axios.get("http://localhost:3001/api/halls").then(res => {
+      this.setState({halls: [...res.data]})
     });
+    });
+  }
+
+  idsGetter = (ids) => {
+    ids.forEach(id => this.setState({ seats: [...this.state.seats, {seat_id: id}]}))
+    
   }
 
   onSubmit(e) {
     e.preventDefault();
     this.setState({ next: true });
+    console.log(this.state.seats)
   }
 
   render() {

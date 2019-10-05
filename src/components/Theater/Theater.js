@@ -3,9 +3,13 @@ import AppContext from "../../context";
 import axios from "axios";
 import Seat from "./Seat";
 import "./Theater.css";
+import ReservationTickets from '../ReservationTickets/ReservationTickets'
 
 class Theather extends React.Component {
-  state = { reservedSeats: [] }
+  state = {
+    reservedSeats: [],
+    next: false
+  }
 
   printRows = () => {
     const rows = ["A", "B", "C", "D", "E", "F", "G", "I", "J"];
@@ -15,7 +19,7 @@ class Theather extends React.Component {
       for (let i = 1; i < 16; i++) {
         let number = i < 8 ? i : i - 1;
         row[i] = <Seat number={number} coords={value + number} />;
-        if (this.state.reservedSeats.includes(value+number)) row[i] = <Seat number={number} coords={value + number} className="taken" />;
+        if (this.state.reservedSeats.includes(value + number)) row[i] = <Seat number={number} coords={value + number} className="taken" />;
         if (i == 8) {
           row[i] = <br />;
         }
@@ -33,13 +37,32 @@ class Theather extends React.Component {
           this.setState({ reservedSeats: [...this.state.reservedSeats, item.seat] });
         });
       });
-    //   console.log(this.state.reservedSeats)
+      //   console.log(this.state.reservedSeats)
 
     });
   }
 
+  onSubmit(e) {
+    e.preventDefault();
+    this.setState({ next: true });
+  }
+
   render() {
-    return <div className="seats-container">{this.printRows()}</div>;
+    if (!this.state.next) {
+      return (<div className="theatre-container">
+        <div className="seats-container">{this.printRows()}</div>
+        <form onSubmit={this.onSubmit.bind(this)}>
+          <button type="submit" value="confirm" className="theatre-next-button">
+            <i className="">Next</i>
+          </button>
+        </form></div>
+      );
+    }
+    return (
+      <AppContext.Consumer>
+        {context => (<div><ReservationTickets reservation={{ ...context }} /></div>)}
+      </AppContext.Consumer>
+    )
   }
 }
 

@@ -35,7 +35,7 @@ class ReservationTickets extends React.Component {
             .get(`http://localhost:3001/api/tickets/`)
             .then(res => {
                 const tickets = res.data;
-                this.setState({ ticketListFull: tickets })
+                this.setState({ ticketListFull: [{ value: '', type: '(Select ticket)' }].concat(tickets) });
                 return tickets;
             })
     };

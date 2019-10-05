@@ -81,6 +81,7 @@ class Root extends React.Component {
       updateValue: this.updateValue
     };
     console.log(contextElements);
+    console.log('STAN', this.state);
     return (
       <BrowserRouter>
         <AppContext.Provider value={contextElements}>

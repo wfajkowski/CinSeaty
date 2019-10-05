@@ -1,0 +1,59 @@
+.ticketRow {
+  display: flex;
+  // flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.seatElement {
+  padding: 5px;
+}
+
+.list {
+  padding: 5px;
+  margin: 5px;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.reservationInfoDiv,
+.reservationFormDiv {
+  border: 2px solid rgb(48, 48, 48);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  width: 50%;
+  min-width: 350px;
+  margin: 20px;
+}
+
+.reservationForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 10px;
+  width: 100%;
+  max-width: 350px;
+  margin: 0;
+  .formItem {
+    position: relative;
+    margin: 5px;
+    padding: 5px;
+  }
+}
+
+.formHeader {
+  position: relative;
+  margin: 0;
+}
+
+.seatElement {
+  list-style: none;
+}

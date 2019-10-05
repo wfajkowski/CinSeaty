@@ -1,11 +1,11 @@
 import React from "react";
-import ReservationForm from '../../components/ReservationForm/ReservationForm';
+import ReservationTickets from '../../components/ReservationTickets/ReservationTickets';
 import AppContext from '../../context';
 
 const Reservation = () => {
   return (
     <AppContext.Consumer>
-      {context => (<h1><ReservationForm reservation={{ ...context }} /></h1>)}
+      {context => (<div><ReservationTickets reservation={{ ...context }} /></div>)}
     </AppContext.Consumer>
   );
 };

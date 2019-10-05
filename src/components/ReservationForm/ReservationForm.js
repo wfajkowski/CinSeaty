@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import QRCode from 'qrcode.react';
-import styles from "./ReservationForm.module.scss";
 import moment from "moment";
+import styles from "./ReservationForm.module.scss";
+import ReservationConfirmation from '../ReservationConfirmation/ReservationConfirmation'
 
 class ReservationForm extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class ReservationForm extends React.Component {
   }
 
   async componentDidMount() {
-    const programmeId = this.props.reservation.reservation.programme_id;
+    const programmeId = this.props.context.reservation.reservation.programme_id;
     let movieId;
     const reservation = Math.random().toString(36).substr(2, 10).toUpperCase();
     this.setState({ reservation });
@@ -58,10 +58,10 @@ class ReservationForm extends React.Component {
       })
 
     const getSeats = () => {
-      const seats = this.props.reservation.reservation.seats;
+      const seats = this.props.tickets.fullTickets;
       let total = 0;
       seats.forEach(seat => {
-        const seatId = seat.seat_id;
+        const seatId = seat.place_id;
 
         axios
           .get("http://localhost:3001/api/halls/")
@@ -93,7 +93,6 @@ class ReservationForm extends React.Component {
                 this.setState({ total });
               })
           })
-
       })
     };
     getSeats();
@@ -132,7 +131,6 @@ class ReservationForm extends React.Component {
       });
 
   }
-
 
   render() {
     if (!this.state.active) {
@@ -187,12 +185,7 @@ class ReservationForm extends React.Component {
                 required
                 onChange={this.onChange.bind(this)}
               />
-              <button
-                type="submit"
-                className={styles.formItem}
-                value="confirm"
-                id="confirm-button"
-              >
+              <button type="submit" className={styles.formItem} value="confirm" id="confirm-button">
                 <i className="">Confirm</i>
               </button>
             </form>
@@ -202,31 +195,7 @@ class ReservationForm extends React.Component {
     };
 
     return (
-      <div className={styles.formContainer}>
-        <p>Thank You for the reservation.</p>
-
-        <p>Title: {this.state.title}</p>
-        <p>Screening date: {this.state.date}</p>
-        <p>Screening time: {this.state.time}</p>
-        <p>Cinema hall: {this.state.hall}</p>
-        <p>Tickets: {(this.state.seats).map(function (d, idx) {
-          return (<li key={idx} className={styles.seatElement}>Place: {d.seat}, {d.type}, {d.price}</li>)
-        })}</p>
-        <p>Total price: {`${(this.state.total).toFixed(2).replace('.', ',')} PLN`}</p>
-        <p>Your Reservation Number is:  {this.state.reservation}</p>
-        <p>Please show it before the Movie in the ticket office.</p>
-        <div>
-          <QRCode
-            value={String(this.state.reservation)}
-            size={128}
-            bgColor={"#ffffff"}
-            fgColor={"#000000"}
-            level={"L"}
-            includeMargin={false}
-            renderAs={"svg"}
-          />
-        </div>
-      </div>
+      <ReservationConfirmation state={this.state} />
     );
   }
 }

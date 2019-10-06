@@ -37,6 +37,8 @@ class Root extends React.Component {
         e.target.alt === element.title
       ) {
         return element;
+      } else if(e.target.parentNode.previousSibling.previousSibling.value === element.title){
+        return element;
       }
     }
     let x = this.state.movies.find(check);
@@ -74,7 +76,10 @@ class Root extends React.Component {
     return (
       <BrowserRouter>
         <AppContext.Provider value={contextElements}>
-          <Navbar value={this.state.movies} />
+          <Navbar value={this.state.movies} 
+              openMovieDetails={this.openMovieDetails}
+              closeMovieDetails={this.closeMovieDetails}
+              activeMovie={this.state.activeMovie}/>
           <Switch>
             <Route
               exact

@@ -24,6 +24,7 @@ class Navbar extends React.Component {
   changeValue = event =>{
     this.setState({
       filter: event.target.value
+      
     })
     console.log(this.props.value)
   }
@@ -51,7 +52,6 @@ class Navbar extends React.Component {
     //     item[key].toLowerCase().includes(lowercasedFilter)
     //   });
     // // });
-    console.log(this.state);
     const filmList = this.state.films
       .filter(item => {
         return item.title.toLowerCase().indexOf(this.state.filter) >= 0
@@ -96,8 +96,9 @@ class Navbar extends React.Component {
           <ul>
           {filmList}
           </ul>    
-          <i className="fa fa-search"></i>
-          {/* onClick={context.openDetails} */}
+          <div onClick = {context.activeMovie}>
+          <i className="fa fa-search" onClick={context.openDetails}></i>
+          </div>
           </div>
       </nav>
       )}

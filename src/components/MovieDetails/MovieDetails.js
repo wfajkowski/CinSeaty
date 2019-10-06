@@ -1,10 +1,10 @@
 import React from "react";
 import AppContext from "../../context";
-import "../Pop-up-site/Content.css";
+import "./MovieDetails.css";
 //import styles from "./MovieDetails.module.scss";
 
 const MovieDetails = (props) => {
-  console.log(props);
+  //console.log(props);
   let title = props.activeMovie.title;
   let trailer = props.activeMovie.trailer;
   let duration = props.activeMovie.duration;
@@ -17,25 +17,18 @@ const MovieDetails = (props) => {
     };
   };
   let production = props.activeMovie.production;
-  let premiere = props.activeMovie.premiere;
+  let premiere = props.activeMovie.premiere.slice(0,10);
   let lead = props.activeMovie.lead;
-  let description = props.activeMovie.description
+  let description = props.activeMovie.description;
   return (
     <AppContext.Consumer>
       {context => (
         <div className = "background">
         <div className = "content">
             <div className = "title"><h1>{title}</h1></div>
-            <div className = "close" onClick = {props.closeMovieDetails}>x</div>
-            <div className = "trailer"><iframe width="90%" height="100%" src={trailer} frameBorder="0" allow="fullscreen"></iframe></div>
-            <div className = "lead">{lead}</div>
-            <div className = "description">{description}</div>
-            <div className = "reservation">
-                <div className = "hours">Godziny seansów:</div>
-                <div>12:00</div>
-                <div>16:00</div>
-                <div>20:00</div>
-            </div>
+            <div className = "close" onClick = {props.closeMovieDetails} cursor="pointer"><i class="fa fa-times-circle"></i></div>
+            <div className = "trailer"><iframe width="95%" height="90%" src={trailer} frameBorder="0" allow="fullscreen"></iframe></div>
+            <div className = "description">{lead}<br /><br />{description}</div>
             <div className = "metadata">
                 Czas trwania: {duration} minut<br />
                 Gatunek: {genre}<br />

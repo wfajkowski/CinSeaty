@@ -20,25 +20,29 @@ class Contact extends React.Component {
   	<form className="test-mailing">
     	<h1>Contact us !</h1>
     	<div>
-      <p>Name</p>
-      <textarea 
+      <p>Name*</p>
+      <input 
+      type="text"
         style={{width: '100%', height: '30px'}}
         placeholder="Put your name here"
         value={this.state.name}
         maxLength='50'
         onChange={this.nameChange}
+        required
       />
-      <p>Email</p>
-      <textarea 
+      <p>Email*</p>
+      <input 
         style={{width: '100%', height: '30px'}}
         placeholder="Your email contact"
         value={this.state.email}
         type="email"
         maxLength='50'
         onChange={this.emailChange}
+        required
       /> 
       <p>Text</p>
       <textarea
+      type="text"
         id="test-mailing"
         name="test-mailing"
         onChange={this.feedbackChange}
@@ -47,7 +51,8 @@ class Contact extends React.Component {
         value={this.state.feedback}
         style={{width: '100%', height: '150px'}}
       	/>
-        <input type="button" value="Submit" className="btn btn--submitt" onClick={this.handleSubmit} />
+        <p>*required</p>
+        <input type="submit" value="Submit" className="btn btn--submitt" onClick={this.handleSubmit} />
     	</div>
   	</form>
     </div>
@@ -65,15 +70,20 @@ class Contact extends React.Component {
 
   handleSubmit (event) {
     const templateId = 'template_afy2pSYu';
-  
-    this.sendFeedback(templateId, {message_html: this.state.feedback, from_name: this.state.name, reply_to: this.state.email})
+    this.sendFeedback(templateId, {
+      message_html: this.state.feedback, 
+      from_name: this.state.name, 
+      reply_to: this.state.email
+    })
     }
   
     sendFeedback (templateId, variables) {
+      if(this.state.name&&this.state.email){
     window.emailjs.send('gmail', templateId, variables)
       .then(res =>{ alert('Email successfully sent!')
       this.setState({feedback: '', name: '', email: ''})})
       .catch(err =>  alert(`Unfortunately there was a problem with sending an email probably thats the problem: ${err.text}`))
+    } 
     }
 }
 export default Contact;

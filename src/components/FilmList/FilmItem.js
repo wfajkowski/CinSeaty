@@ -22,6 +22,7 @@ class FilmItem extends React.Component {
   }
 
   render() {
+    
     let shown = null;
     for (let i = 0; i < this.state.programme.length; i++) {
       // console.log(Moment(this.state.programme[i].time).format("D.M"));

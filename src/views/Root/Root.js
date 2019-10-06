@@ -9,6 +9,7 @@ import Contact from "../Contact/Contact";
 import Reservation from "../Reservation/Reservation";
 import Navbar from "../../components/Navbar/Navbar";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
+import Mateusz from "../Mateusz/Mateusz";
 //import PopUp from "../../components/Pop-up-site/Content";
 
 class Root extends React.Component {
@@ -18,18 +19,7 @@ class Root extends React.Component {
     activeDate: Moment().format("D.M"),
     isMovieDetailsOpen: false,
     reservation: {
-      programme_id: "5d9623e09142db405c99a22d",
-      seats: [{
-        seat_id: "5d9624c58b7ae53ab4d299e6",
-        hall_id: 1,
-        ticket_id: "5d93b090c32d0709bc2c091a",
-        status: "reserved"
-      }, {
-        seat_id: "5d9624c58b7ae53ab4d299e8",
-        hall_id: 1,
-        ticket_id: "5d93b09fc32d0709bc2c091b",
-        status: "reserved"
-      }]
+      programme_id: "5d9623e09142db405c99a22d"
     }
   };
 
@@ -101,6 +91,7 @@ class Root extends React.Component {
             />
             <Route path="/contact" component={Contact} />
             <Route path="/reservation" component={Reservation} />
+            <Route path="/nodawaj" component={Mateusz}/>
           </Switch>
           {isMovieDetailsOpen && (
             <MovieDetails

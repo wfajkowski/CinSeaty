@@ -32,7 +32,8 @@ nav {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: rgb(131, 131, 131);
+  width: 100%;
+  background-color: #4d606e;
   display: flex;
   position: sticky;
   min-width: min-content;
@@ -58,11 +59,12 @@ p {
   padding: 0 10px 0 15px !important;
   color: #fff;
   font-size: 20px !important;
-  margin: auto 0 !important;
+  margin: 6px 0 9px 0 !important;
 }
 
 #hamburger {
-  padding: 5px;
+  padding: 5px !important;
+  margin: 0 !important;
   width: 50px;
   top: 6px;
   position: absolute;
@@ -107,14 +109,28 @@ p {
 .searching input {
   width: 100%;
   border: none;
+  margin: 0;
   height: 30px;
-  padding-left: 5px;
+  padding-left: 15px;
   box-sizing: border-box;
+  border-radius: 20px;
+  transition: 1s;
+  background-color: #fff;
+  color: #000;
+}
+.searching input p {
+  margin-left: 20px;
 }
 .searching input:focus + ul{
   /* display: block; */
-  height: 150px;
+  height: 200px;
   transition: 1s;
+}
+.searching input:focus {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  transition: 1s;
+  outline: none;
 }
 .searching ul {
   position: relative;
@@ -124,26 +140,43 @@ p {
   height: 0px;
   margin: 0;
   width: 100%;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px; 
   /* border: 1px solid #fff; */
   transition: 1s;
   /* display: none; */
 }
+body ::-webkit-scrollbar{
+  width: 0px;
+}
 .searching ul li{
   text-decoration: none;
   list-style: none;
-  background-color: rgb(206, 120, 120);
+  padding-left: 5px;
+  background-color: rgb(255, 255, 255);
+  color: #000;
+}
+.searching ul li:hover {
+  background-color: #d3d4d8;
+}
+.searching ul li:active{
+  background-color: #3fbac2;
+}
+.searching ul li:last-child{
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 .searching ul li p {
   font-size: 16px !important;
   padding: 3px 0 !important;
-  margin: 0 5px !important;
+  margin: 0 10px !important;
+  color: #000;
 }
 .fa-search {
   position: absolute;
   top: 0;
-  padding: 6px;
-  right: 0;
-  background-color: #fff;
+  padding: 8px;
+  right: 5px;
   cursor: pointer;
 }
 @media (max-width: 700px) {

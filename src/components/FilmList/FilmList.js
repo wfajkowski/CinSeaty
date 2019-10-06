@@ -20,17 +20,17 @@ class FilmList extends React.Component {
     axios.get("http://localhost:3001/api/programmes").then(res => {
       programmes = [...res.data];
       programmes.forEach(item =>
-        allDates.push(Moment(item.time).format("D.M"))
+        allDates.push(Moment(item.time).format("D.M")),
         );
         let filteredDates = allDates
           .filter((item, index, self) => {
             return index === self.indexOf(item);
           });
         this.setState({
-          dates: filteredDates.slice(
-            filteredDates.indexOf(Moment().format("D.M"))
-          )
+          dates: filteredDates.slice(3,10)
         });
+        console.log(this.state.dates)
+
       });
     }
     

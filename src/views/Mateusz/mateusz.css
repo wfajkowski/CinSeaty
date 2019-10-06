@@ -1,0 +1,49 @@
+
+.bgg {
+    animation: slide 10s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #995EC2 60%, #FFE9FF 0%);
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+  }
+  .bgg2 {
+    animation-direction:alternate-reverse;
+    animation-duration:14s;
+  }
+  .bgg3 {
+    animation-duration:18s;
+  }
+  @keyframes slide {
+    0% {
+      transform:translateX(-25%);
+    }
+    100% {
+      transform:translateX(25%);
+    }
+  }
+  .wtf {
+      width: 100%;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      background-image: url('https://i.pinimg.com/originals/d8/04/72/d804720e973903f957014c47457751ee.jpg');
+      border: 40px;
+      padding-top: 100px;
+  }
+  .hehehe {
+      background-color: rgb(255, 255, 255);
+      width: 40%;
+      height: 20%;
+      margin: 100px auto;
+      border-radius: 50px;
+      border: 2px solid #995EC2;
+      padding: 25px;
+  }
+  .hehehe p{
+      color: #000;
+      text-align: center;
+  }

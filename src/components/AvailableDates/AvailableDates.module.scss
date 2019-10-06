@@ -1,5 +1,9 @@
 .wrapper {
-  margin: 60px auto 20px;
+  margin: 40px auto 20px auto;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+}
+button {
+  margin: 5px !important;
 }

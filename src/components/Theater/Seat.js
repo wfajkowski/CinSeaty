@@ -1,28 +1,18 @@
 import React from "react";
 
-class Seat extends React.Component {
-  state = { taken: false, picked: false, class: "seat" };
 
-  onSeatClick = async event => {
-    /* let letter;
-    let element = event.target;
-    if (event.target.innerText < 15 && event.target.innerText > 0) {
-      if (event.target.innerText < 8) {
-        for (let i = 0; i < event.target.innerText; i++) {
-          element = element.previousSibling;
-          letter = element.innerText;
-        }
-      } else {
-        for (let i = 0; i <= event.target.innerText; i++) {
-          element = element.previousSibling;
-          letter = element.innerText;
-        }
-      }
-      console.log(letter + event.target.innerText);
-      console.log(this.props.coords)
-    } */
-    // console.log(this.state);
-    // console.log(this.props);
+let allSelected= []
+
+class Seat extends React.Component {
+  state = { 
+      taken: false, 
+      picked: false, 
+      class: "seat",
+      _id: ""
+    };
+
+  
+  onSeatClick = event => {
     if (this.props.className === "taken") {
       this.setState({ taken: true });
     } else {
@@ -30,9 +20,13 @@ class Seat extends React.Component {
         if (!this.state.taken) {
           if (!this.state.picked) {
             this.setState({ class: "seat reserved", picked: true });
+            allSelected = [...allSelected, this.props.id]
           } else {
             this.setState({ class: "seat", picked: false });
+            let index = allSelected.indexOf(this.props.id)
+            allSelected.splice(index, 1)
           }
+          this.props.idsGetter(allSelected)
         }
       }
     }

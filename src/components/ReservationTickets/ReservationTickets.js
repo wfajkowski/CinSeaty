@@ -10,7 +10,8 @@ class ReservationTickets extends React.Component {
             chosenPlaces: [],
             ticketListFull: [],
             fullTickets: [],
-            next: false
+            next: false,
+            states: []
         }
     }
 
@@ -45,22 +46,28 @@ class ReservationTickets extends React.Component {
         const arr = (e.target.value).split(" ");
         const place_id = arr[0];
         const ticket_id = arr[1];
-
         this.setState({
             fullTickets: [...this.state.fullTickets, {
                 place_id,
                 ticket_id
-            }]
-        })
+            }],
+            states: [...this.state.states, place_id]
+        });
     }
 
     onSubmit(e) {
         e.preventDefault();
-        this.setState({ next: true });
+
+        if (!this.state.fullTickets || !this.state.fullTickets.length) {
+            alert("Please choose tickets type")
+        } else { this.setState({ next: true }); }
     }
 
     render() {
         if (!this.state.next) {
+            const isSet = (id) => {
+                return this.state.states.includes(id);
+            };
             return (
                 <div>
       <div className="bg"></div>
@@ -72,7 +79,7 @@ class ReservationTickets extends React.Component {
                         <form id="tickets-info" className={styles.reservationForm} onSubmit={this.onSubmit.bind(this)}>
                             {(this.state.chosenPlaces).map((d, idx) => {
                                 return (<li key={idx} className={styles.seatElement}>{`Place: ${d.seat_row}${d.seat}`}
-                                    {<select className={styles.list} onChange={this.onChange.bind(this)}>
+                                    {<select className={styles.list} onChange={this.onChange.bind(this)} disabled={isSet(d._id)} >
                                         {(this.state.ticketListFull).map(
                                             (e, idx) => {
                                                 return (<option name={e.type} key={idx} value={`${d._id} ${e._id}`}>{e.type}</option>)

@@ -13,10 +13,11 @@ class FilmCarousel extends React.Component {
       infinite: true,
       speed: 500,
       slidesToShow: 5,
-      slidesToScroll: 3,
-      draggable: true,
+      slidesToScroll: 1,
+      draggable: false,
       arrows: true,
-      // autoplay: true,
+      autoplay: true,
+      autoplaySpeed: 3000,
       responsive: [
         {
           breakpoint: 1024,

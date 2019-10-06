@@ -11,12 +11,14 @@ class Theather extends React.Component {
     const rows = ["A", "B", "C", "D", "E", "F", "G", "I", "J"];
     return rows.map(value => {
       const row = [];
-      row[0] = <Seat number={value} className="letter" />;
+      row[0] = <Seat number={value} className="letter" key={value + 0} />;
       for (let i = 1; i < 16; i++) {
         let number = i < 8 ? i : i - 1;
-        row[i] = <Seat number={number} coords={value + number} />;
-        if (this.state.reservedSeats.includes(value+number)) row[i] = <Seat number={number} coords={value + number} className="taken" />;
-        if (i == 8) {
+        row[i] = (
+          <Seat number={number} coords={value + number} key={value + number} />
+        );
+        if (this.state.reservedSeats.includes(value+number)) row[i] = <Seat number={number} coords={value + number} className="taken" key={value + number}/>;
+        if (i === 8) {
           row[i] = <br />;
         }
       }

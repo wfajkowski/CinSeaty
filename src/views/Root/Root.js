@@ -9,6 +9,7 @@ import Contact from "../Contact/Contact";
 import Reservation from "../Reservation/Reservation";
 import Navbar from "../../components/Navbar/Navbar";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
+import ConfirmProgramme from "../../components/ConfirmProgramme/ConfirmProgramme";
 //import PopUp from "../../components/Pop-up-site/Content";
 
 class Root extends React.Component {
@@ -17,25 +18,13 @@ class Root extends React.Component {
     activeMovie: null,
     activeDate: Moment().format("D.M"),
     isMovieDetailsOpen: false,
-    reservation: {
-      programme_id: "5d9623e09142db405c99a22d",
-      seats: [{
-        seat_id: "5d9624c58b7ae53ab4d299e6",
-        hall_id: 1,
-        ticket_id: "5d93b090c32d0709bc2c091a",
-        status: "reserved"
-      }, {
-        seat_id: "5d9624c58b7ae53ab4d299e8",
-        hall_id: 1,
-        ticket_id: "5d93b09fc32d0709bc2c091b",
-        status: "reserved"
-      }]
-    }
+    isConfirmProgrammeOpen: false,
+    programme_id: null
   };
 
   componentDidMount() {
     axios.get("http://localhost:3001/api/movies").then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       this.setState({ movies: res.data });
     });
   }
@@ -67,21 +56,36 @@ class Root extends React.Component {
     });
   };
 
+  openConfirm = () => {
+    this.setState({
+      isConfirmProgrammeOpen: true
+    });
+  };
+
+  closeConfirm = () => {
+    this.setState({
+      isConfirmProgrammeOpen: false
+    });
+  };
+
   updateValue = (key, val) => {
     this.setState({ [key]: val });
   };
 
   render() {
     const { isMovieDetailsOpen } = this.state;
+    const { isConfirmProgrammeOpen } = this.state;
     const contextElements = {
       ...this.state,
       openDetails: this.openMovieDetails,
       closeDetails: this.closeMovieDetails,
       activeMovie: this.activeMovie,
-      updateValue: this.updateValue
+      updateValue: this.updateValue,
+      openConfirm: this.openConfirm,
+      closeConfirm: this.closeConfirm
     };
-    console.log(contextElements);
-    console.log('STAN', this.state);
+    console.log("STAN", this.state);
+    console.log(window.location.host);
     return (
       <BrowserRouter>
         <AppContext.Provider value={contextElements}>
@@ -108,6 +112,9 @@ class Root extends React.Component {
               closeMovieDetails={this.closeMovieDetails}
               activeMovie={this.state.activeMovie}
             />
+          )}
+          {isConfirmProgrammeOpen && (
+            <ConfirmProgramme {...this.state} movie={this.activeMovie.title} />
           )}
         </AppContext.Provider>
       </BrowserRouter>

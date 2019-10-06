@@ -51,9 +51,16 @@ class FilmCarousel extends React.Component {
       <AppContext.Consumer>
         {context => (
           <Slider {...settings}>
-              {context.movies.map(item => (
-                <CarouselItem key={item._id} {...item} />
-              ))}
+            {context.movies.map(item => (
+              <CarouselItem
+                key={item._id}
+                {...item}
+                updateFn={context.updateValue}
+                openDetails={context.openDetails}
+                activeMovie={context.activeMovie}
+                movies={context.movies}
+              />
+            ))}
           </Slider>
         )}
       </AppContext.Consumer>

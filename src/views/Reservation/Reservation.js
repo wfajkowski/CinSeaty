@@ -4,7 +4,8 @@ import AppContext from '../../context';
 import Theather from '../../components/Theater/Theater';
 
 
-const Reservation = () => {
+const Reservation = (props) => {
+  console.log(window.location.href);
   return (
     <>
     <Theather />

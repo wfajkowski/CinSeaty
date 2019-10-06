@@ -1,0 +1,45 @@
+.confirmBackground {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100vw;
+  height: 100vh
+}
+
+.confirmWrapper {
+  background: #acb6b7;
+  padding: 5%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    margin-bottom: 20px!important;
+  }
+  .closeBtn {
+    color: #fff;
+    font-size: 36px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
+  .confirmButton {
+    background: #D96C06;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    outline: 0;
+    border: none;
+    vertical-align: baseline;
+    color: #fff;
+    font-size: 18px;
+  }
+}

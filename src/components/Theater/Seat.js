@@ -53,6 +53,7 @@ class Seat extends React.Component {
       <div
         className={`${this.state.class} ${this.props.className}`}
         onClick={this.onSeatClick}
+        key={this.props.coords}
       >
         {this.props.number}
       </div>

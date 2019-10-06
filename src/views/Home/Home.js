@@ -10,7 +10,7 @@ const Home = (props) => {
       <div className="bg bg2"></div>
       <div className="bg bg3"></div>
     <div className="ui container">
-      <FilmCarousel />
+      <FilmCarousel  openMovieDetails = {props.openMovieDetails} closeMovieDetails = {props.closeMovieDetails} activeMovie = {props.activeMovie} activeDate={props.activeDate}/>
       <FilmList openMovieDetails = {props.openMovieDetails} closeMovieDetails = {props.closeMovieDetails} activeMovie = {props.activeMovie} activeDate={props.activeDate}/>
     </div>
     </div>

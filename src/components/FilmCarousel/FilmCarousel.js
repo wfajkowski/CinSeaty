@@ -52,7 +52,7 @@ class FilmCarousel extends React.Component {
         {context => (
           <Slider {...settings}>
               {context.movies.map(item => (
-                <CarouselItem key={item._id} {...item} />
+                <CarouselItem key={item._id} {...item} date={this.props.activeDate}/>
               ))}
           </Slider>
         )}

@@ -1,3 +1,4 @@
+
 .background {
     position: fixed;
     top: 0;
@@ -6,6 +7,12 @@
     background-color: rgba(0, 0, 0, 0.8);
     width: 100vw;
     height: 100vh;
+}
+.background2 {
+    filter: blur(8px);
+  -webkit-filter: blur(8px);
+  width: 100%;
+  height: 100%;
 }
 .content {
     padding: 10px;
@@ -22,6 +29,8 @@
 }
 .close {
     justify-self: flex-end;
+    font-size: 20px;
+    cursor: pointer;
 }
 .trailer {
     grid-row: span 3;

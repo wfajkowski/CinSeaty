@@ -20,8 +20,9 @@ class FilmItem extends React.Component {
         this.setState({ programme: res.data });
       });
   };
-
+  
   render() {
+    
     let shown = null;
     for(let i = 0; i < this.state.programme.length; i++){
       // console.log(Moment(this.state.programme[i].time).format("D.M"));
@@ -32,7 +33,7 @@ class FilmItem extends React.Component {
     // if(this.state.programme){
     //   shown = true;
     // }
-
+    
     // console.log('FilmItem', this.state.programme);
     // console.log('FilmItem', this.props.date);
     // console.log(shown, 'fffffff');
@@ -42,7 +43,7 @@ class FilmItem extends React.Component {
         {context => (
           shown ?
           (<li className={styles.filmItem} >
-            <div className={styles.filmCover} onClick = {context.activeMovie} >
+            <div className={styles.filmCover} onClick = {context.activeMovie}>
               <img
                 src={this.props.photo}
                 alt={this.props.title}

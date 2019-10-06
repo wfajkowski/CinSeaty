@@ -4,6 +4,7 @@ import "../Pop-up-site/Content.css";
 //import styles from "./MovieDetails.module.scss";
 
 const MovieDetails = (props) => {
+  
   console.log(props);
   let title = props.activeMovie.title;
   let trailer = props.activeMovie.trailer;

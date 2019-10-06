@@ -37,7 +37,16 @@ class Root extends React.Component {
         e.target.alt === element.title
       ) {
         return element;
-      } else if(e.target.parentNode.previousSibling.previousSibling.value === element.title){
+      }
+    }
+    let x = this.state.movies.find(check);
+    this.setState({
+      activeMovie: x
+    });
+  };
+  activeMoviee = e => {
+    function check(element) {
+      if(e.target.parentNode.previousSibling.previousSibling.value === element.title){
         return element;
       }
     }
@@ -83,6 +92,7 @@ class Root extends React.Component {
       openDetails: this.openMovieDetails,
       closeDetails: this.closeMovieDetails,
       activeMovie: this.activeMovie,
+      activeMoviee: this.activeMoviee,
       updateValue: this.updateValue,
       openConfirm: this.openConfirm,
       closeConfirm: this.closeConfirm
@@ -94,6 +104,7 @@ class Root extends React.Component {
           <Navbar value={this.state.movies} 
               openMovieDetails={this.openMovieDetails}
               closeMovieDetails={this.closeMovieDetails}
+              activeMoviee={this.state.activeMoviee}
               activeMovie={this.state.activeMovie}/>
           <Switch>
             <Route

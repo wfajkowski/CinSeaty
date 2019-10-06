@@ -96,7 +96,7 @@ class Navbar extends React.Component {
           <ul>
           {filmList}
           </ul>    
-          <div onClick = {context.activeMovie}>
+          <div onClick = {context.activeMoviee}>
           <i className="fa fa-search" onClick={context.openDetails}></i>
           </div>
           </div>

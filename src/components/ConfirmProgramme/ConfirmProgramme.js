@@ -60,7 +60,7 @@ class ConfirmProgramme extends React.Component {
       // this.props.closeConfirm();
     }
   }
-
+ 
   render() {
     console.log(this);
     console.log(this.props);
@@ -73,7 +73,7 @@ class ConfirmProgramme extends React.Component {
             <div className={styles.confirmBackground}>
               <div className={styles.confirmWrapper}>
                 <div onClick={context.closeConfirm} className={styles.closeBtn}>
-                  x
+                <i class="fa fa-times-circle"></i>
                 </div>
                 <p className={styles.p}>{this.state.movie.title}</p>
                 <p className={styles.p}>{`Date: ${Moment(

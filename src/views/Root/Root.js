@@ -20,15 +20,9 @@ class Root extends React.Component {
     reservation: {
       programme_id: "5d9623e09142db405c99a22d",
       seats: [{
-        seat_id: "5d9624c58b7ae53ab4d299e6",
-        hall_id: 1,
-        ticket_id: "5d93b090c32d0709bc2c091a",
-        status: "reserved"
+        seat_id: "5d9624c58b7ae53ab4d299e6"
       }, {
-        seat_id: "5d9624c58b7ae53ab4d299e8",
-        hall_id: 1,
-        ticket_id: "5d93b09fc32d0709bc2c091b",
-        status: "reserved"
+        seat_id: "5d9624c58b7ae53ab4d299e8"
       }]
     }
   };

@@ -51,6 +51,7 @@ class Navbar extends React.Component {
     //     item[key].toLowerCase().includes(lowercasedFilter)
     //   });
     // // });
+    console.log(this.state);
     const filmList = this.state.films
       .filter(item => {
         return item.title.toLowerCase().indexOf(this.state.filter) >= 0

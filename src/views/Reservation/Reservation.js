@@ -4,14 +4,16 @@ import AppContext from '../../context';
 import Theather from '../../components/Theater/Theater';
 
 
-const Reservation = (props) => {
-  console.log(window.location.href);
+const Reservation = () => {
   return (
     <>
     <AppContext.Consumer>
-      {context => (
+      {context => () => {
+        context.closeConfirm();
+        return(
         <Theather programme_id={context.programme_id}/>
-      )
+        )
+      }
       }
 
     </AppContext.Consumer>

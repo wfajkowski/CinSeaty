@@ -23,13 +23,13 @@ class Theather extends React.Component {
         let number = i < 8 ? i : i - 1;
         let id
         this.state.halls.forEach(item => {
-            if (item.seat_row === value && item.seat === number) {
-                id = item._id
-            }
+          if (item.seat_row === value && item.seat === number) {
+            id = item._id
+          }
         })
         row[i] = <Seat number={number} coords={value + number} id={id} idsGetter={this.idsGetter} />;
         if (this.state.reservedSeats.includes(value + number)) {
-            row[i] = <Seat number={number} coords={value + number} className="taken" />;
+          row[i] = <Seat number={number} coords={value + number} className="taken" />;
         }
         if (i === 8) {
           row[i] = <br />;
@@ -49,14 +49,14 @@ class Theather extends React.Component {
         });
       });
       axios.get("http://localhost:3001/api/halls").then(res => {
-      this.setState({halls: [...res.data]})
-    });
+        this.setState({ halls: [...res.data] })
+      });
     });
   }
 
   idsGetter = (ids) => {
-    ids.forEach(id => this.setState({ seats: [...this.state.seats, {seat_id: id}]}))
-    
+    ids.forEach(id => this.setState({ seats: [...this.state.seats, { seat_id: id }] }))
+
   }
 
   onSubmit(e) {
@@ -78,7 +78,7 @@ class Theather extends React.Component {
     }
     return (
       <AppContext.Consumer>
-        {context => (<div><ReservationTickets reservation={{ ...context }} /></div>)}
+        {context => (<div><ReservationTickets reservation={{ ...context }} seats={this.state.seats} /></div>)}
       </AppContext.Consumer>
     )
   }

@@ -47,8 +47,6 @@ class ReservationForm extends React.Component {
     let movieId;
     const reservation = Math.random().toString(36).substr(2, 10).toUpperCase();
     this.setState({ reservation });
-  console.log("programmeId", programmeId);
-  console.log(this.props);
   if (programmeId){
     await axios.get("http://localhost:3001/api/programmes/").then(res => {
       const programme = res.data.filter(el => {

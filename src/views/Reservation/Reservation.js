@@ -4,8 +4,7 @@ import AppContext from '../../context';
 import Theather from '../../components/Theater/Theater';
 
 
-const Reservation = (props) => {
-  console.log(window.location.href);
+const Reservation = () => {
   return (
     <>
     <AppContext.Consumer>

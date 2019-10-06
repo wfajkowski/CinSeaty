@@ -7,7 +7,13 @@ import Theather from '../../components/Theater/Theater';
 const Reservation = () => {
   return (
     <>
-      <Theather />
+    <AppContext.Consumer>
+      {context => (
+        <Theather programme_id={context.reservation.programme_id}/>
+      )
+      }
+
+    </AppContext.Consumer>
     </>
   );
 };

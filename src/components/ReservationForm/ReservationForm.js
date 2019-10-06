@@ -103,10 +103,32 @@ class ReservationForm extends React.Component {
       [e.target.name]: e.target.value,
     })
   }
-
+  sendFeedback (templateId, variables) {
+    if(this.state.telephone&&this.state.name&&this.state.email){
+  window.emailjs.send('gmail', templateId, variables)
+    .then(res =>{ alert('Email successfully sent!')})
+    .catch(err =>  alert(`Unfortunately there was a problem with sending an email probably thats the problem: ${err.text}`))
+  } else {
+      setTimeout(function(){
+        alert('Please fill all the fields')
+      }, 1000);
+  }
+  }
   onSubmit = (e) => {
     e.preventDefault();
-
+    const templateId = 'send_ticket';
+    this.sendFeedback(templateId, {
+      message_html: this.state.feedback, 
+      from_name: this.state.name, 
+      reply_to: this.state.email,
+      from_surname: this.state.surname,
+      title: this.state.title,
+      reservation: this.state.reservation,
+      hall_id: this.state.hall,
+      date: this.state.date,
+      time: this.state.time,
+      price: this.state.total
+    })
     axios
       .post("http://localhost:3001/api/reservations", {
         programme_id: this.state.programme_id,
@@ -135,6 +157,10 @@ class ReservationForm extends React.Component {
   render() {
     if (!this.state.active) {
       return (
+        <div>
+        <div className="bg"></div>
+        <div className="bg bg2"></div>
+        <div className="bg bg3"></div>
         <div className={styles.formContainer}>
           <div className={styles.reservationInfoDiv}>
             <h3 className={styles.formHeader}>Reservation summary</h3>
@@ -185,12 +211,13 @@ class ReservationForm extends React.Component {
                 required
                 onChange={this.onChange.bind(this)}
               />
-              <button type="submit" className={styles.formItem} value="confirm" id="confirm-button">
+              <button type="submit" className={styles.btnsubmitt} value="confirm" id="confirm-button">
                 <i className="">Confirm</i>
               </button>
             </form>
           </div>
         </div >
+        </div>
       )
     };
 

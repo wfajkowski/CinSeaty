@@ -2,10 +2,12 @@
 .test-mailing {
   width: 50%;
   display: block;
-  padding: 0;
   margin: 10% auto;
   text-align: center;
-  align-content: center
+  padding: 20px;
+border-radius: 20px;
+border: 2px solid #fff;
+background-color: #4d606e;
 }
 
 .test-mailing h1 {
@@ -40,23 +42,24 @@ box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5) inset, 0px -2px 20px white, 0px 1px 5
 background:-webkit-linear-gradient(top, rgb(61, 168, 175) 0%,rgb(53, 145, 151) 100%);
 }
 
-textarea {
+input, textarea {
   padding: 5px 12px;
   box-sizing: border-box;
   margin: 5px 0;
   resize: none;
+  word-wrap: break-word;
   border-radius: 20px;
   border: 2px solid #fff;
   background-color: rgba(0, 0, 0, 0.233);
   color: #fff;
   transition: .7s;
 }
-textarea:focus {
+input:focus, textarea:focus {
   outline: none;
   background-color: rgba(0, 0, 0, 0.356);
   transition: .7s;
 }
-textarea::placeholder {
+input::placeholder, textarea::placeholder {
 color: rgba(255, 255, 255, 0.5);
 }
 .test-mailing p {
@@ -95,5 +98,10 @@ color: rgba(255, 255, 255, 0.5);
 @media (max-width: 700px) {
   .test-mailing{
     width: 70%;
+  }
+}
+@media (max-width: 450px) {
+  .test-mailing{
+    width: 100%;
   }
 }

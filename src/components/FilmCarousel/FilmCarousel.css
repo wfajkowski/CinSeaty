@@ -5,3 +5,15 @@
 .slick-slide {
   height: inherit !important;
 }
+.slick-slider{
+  width: 98%;
+  margin: 40px auto;
+}
+.something {
+  text-align: center;
+  font-size: 24px;
+  color: #fff;
+  margin-top: 50px;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-weight: 700;
+}

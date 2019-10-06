@@ -9,6 +9,10 @@ class ReservationConfirmation extends React.Component {
 
     render() {
         return (
+            <div>
+      <div className="bg"></div>
+      <div className="bg bg2"></div>
+      <div className="bg bg3"></div>
             <div className={styles.formContainer}>
                 <p>Thank You for the reservation.</p>
                 <p>Title: {this.props.state.title}</p>
@@ -32,6 +36,7 @@ class ReservationConfirmation extends React.Component {
                         renderAs={"svg"}
                     />
                 </div>
+            </div>
             </div>
         );
     }

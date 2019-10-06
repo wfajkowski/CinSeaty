@@ -67,13 +67,21 @@ class Theather extends React.Component {
 
   render() {
     if (!this.state.next) {
-      return (<div className="theatre-container">
+      return (
+        <div>
+      <div className="bg"></div>
+      <div className="bg bg2"></div>
+      <div className="bg bg3"></div>
+      <div className="theatre-container">
+      <p>Choose a place:</p>
+
         <div className="seats-container">{this.printRows()}</div>
         <form onSubmit={this.onSubmit.bind(this)}>
           <button type="submit" value="confirm" className="theatre-next-button">
             <i className="">Next</i>
           </button>
         </form></div>
+        </div>
       );
     }
     return (

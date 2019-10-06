@@ -38,13 +38,11 @@
 }
 .close {
     justify-self: flex-end;
-<<<<<<< HEAD
-    font-size: 20px;
-    cursor: pointer;
-=======
     cursor: pointer;
     font-size: 2em;
->>>>>>> 556276895e23c6bf32dfa36d7195fc5d6292b45f
+}
+.close i:hover {
+    background-color: rgb(192, 190, 190);
 }
 .trailer {
     grid-row: span 2;

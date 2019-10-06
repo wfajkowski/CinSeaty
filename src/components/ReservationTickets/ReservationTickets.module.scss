@@ -7,23 +7,37 @@
 
 .seatElement {
   padding: 5px;
+  border-radius:36px;
+  display:inline-block;
+  overflow:hidden;
 }
 
 .list {
   padding: 5px;
   margin: 5px;
+  border-radius: 20px;
+  transition: 1s; 
 }
-
+.list:focus{
+  outline: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  transition: 1s;
+}
 .formContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 50px;
 }
 
 .reservationInfoDiv,
 .reservationFormDiv {
-  border: 2px solid rgb(48, 48, 48);
+  background-color: #4d606eda;
+  border-radius: 20px;
+  border: 2px solid white;
+  color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,11 +56,9 @@
   width: 100%;
   max-width: 350px;
   margin: 0;
-  .formItem {
-    position: relative;
-    margin: 5px;
-    padding: 5px;
-  }
+  border-radius: 20px;
+
+  
 }
 
 .formHeader {
@@ -56,4 +68,31 @@
 
 .seatElement {
   list-style: none;
+}
+.formItem {
+  margin: 20px auto;
+  justify-content: center;
+  display: block;
+  -webkit-transition-duration: 0.4s;
+transition-duration: 0.4s;
+background-color: #4d606e;
+border: 2px #fff solid;
+color: #fff;
+height: 35px;
+border-radius: 15px;
+  width: 100%;
+  box-shadow: 0px 0px 1px white inset, 0px -1px 2px white, 0px 2px 7px rgba(0, 0, 0, 0.1), 0px 8px 5px rgba(0, 0, 0, 0.219);
+  -webkit-transition:box-shadow 0.5s;
+  transition: .5s;
+}
+.formItem:hover {
+  background-color: #647b8b;
+  box-shadow: 0px 0px 1px white inset, 0px -2px 15px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
+}
+.formItem:focus {
+  outline: none;
+}
+.formItem:active {
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5) inset, 0px -2px 20px white, 0px 1px 5px rgba(0, 0, 0, 0.1), 0px 2px 10px rgba(0, 0, 0, 0.1);
+background:-webkit-linear-gradient(top, rgb(61, 168, 175) 0%,rgb(53, 145, 151) 100%);
 }

@@ -65,9 +65,19 @@
   border-radius: 20px;
 }
 .slick-list {
-  width: 105%;
-  margin: 100px auto;
+  width: 100%;
+  margin: 20px auto;
   background-color: #4d606eda;
 border-radius: 20px;
 border: 2px solid #fff;
+}
+
+@media only screen and (max-width: 460px) {
+  .FilmList_filmListWrapper__caZ8y {
+    width: 90%;
+    margin-left: 15px;
+    padding: 0;
+    margin-block-start: 0 !important;
+    margin-block-end: 0 !important;
+  }
 }

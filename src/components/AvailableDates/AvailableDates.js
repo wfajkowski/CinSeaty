@@ -25,13 +25,13 @@ class AvailableDates extends React.Component {
   };
 
   render() {
-    console.log(Moment().format("D.M"));
-    console.log(
-      Moment()
-        .add(1, "days")
-        .format("D.M")
-    );
-    console.log('activeButton', this.state.activeButton);
+    // console.log(Moment().format("D.M"));
+    // console.log(
+    //   Moment()
+    //     .add(1, "days")
+    //     .format("D.M")
+    // );
+    // console.log('activeButton', this.state.activeButton);
     return (
       <div className={styles.wrapper}>
         {this.props.dates.map(item => (

@@ -33,6 +33,10 @@
     justify-self: flex-end;
     cursor: pointer;
     font-size: 2em;
+    height: min-content;
+}
+.close i:hover {
+    color: rgb(207, 207, 207);
 }
 .trailer {
     grid-row: span 2;

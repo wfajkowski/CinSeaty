@@ -62,11 +62,15 @@ class ReservationTickets extends React.Component {
     render() {
         if (!this.state.next) {
             return (
+                <div>
+      <div className="bg"></div>
+      <div className="bg bg2"></div>
+      <div className="bg bg3"></div>
                 <div className={styles.formContainer} >
                     <div className={styles.reservationFormDiv}>
-                        <h3 className={styles.formHeader}>Please choose you tickets</h3>
+                        <h3 className={styles.formHeader}>Please choose your tickets</h3>
                         <form id="tickets-info" className={styles.reservationForm} onSubmit={this.onSubmit.bind(this)}>
-                            <div>Tickets: {(this.state.chosenPlaces).map((d, idx) => {
+                            {(this.state.chosenPlaces).map((d, idx) => {
                                 return (<li key={idx} className={styles.seatElement}>{`Place: ${d.seat_row}${d.seat}`}
                                     {<select className={styles.list} onChange={this.onChange.bind(this)}>
                                         {(this.state.ticketListFull).map(
@@ -75,11 +79,12 @@ class ReservationTickets extends React.Component {
                                             })}
                                     </select>}
                                 </li>)
-                            })}</div>
+                            })}
                             <button type="submit" className={styles.formItem} value="confirm">
                                 <i className="">Next</i>
                             </button>
                         </form>
+                    </div>
                     </div>
                 </div >
             )

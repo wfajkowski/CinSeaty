@@ -9,6 +9,7 @@ import Contact from "../Contact/Contact";
 import Reservation from "../Reservation/Reservation";
 import Navbar from "../../components/Navbar/Navbar";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
+import Mateusz from "../Mateusz/Mateusz";
 //import PopUp from "../../components/Pop-up-site/Content";
 
 class Root extends React.Component {
@@ -89,6 +90,7 @@ class Root extends React.Component {
             />
             <Route path="/contact" component={Contact} />
             <Route path="/reservation" component={Reservation} />
+            <Route path="/nodawaj" component={Mateusz}/>
           </Switch>
           {isMovieDetailsOpen && (
             <MovieDetails

@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import './Navbar.css';
 import axios from "axios";
-
+import AppContext from "../../context";
 
 
 class Navbar extends React.Component {
@@ -59,6 +59,8 @@ class Navbar extends React.Component {
       .map(item => (
         <li key={item._id} onClick={this.setValue}><p>{item.title}</p></li>))
     return (
+      <AppContext.Consumer>
+        {context => (
       <nav className="navbar">
         <ul className="navbar-nav mr-auto" id="navigation" ref={this.navibar}>
           <div className="nav-flex">
@@ -80,6 +82,11 @@ class Navbar extends React.Component {
               Contact
             </NavLink>
           </li>
+          <li>
+            <NavLink activeClassName="active-nav-link" className="nav-link" exact to="/nodawaj">
+              Mateusz daj 100%
+            </NavLink>
+          </li>
           <button onClick={this.hamburger} id="hamburger" className="turnRight">
             <div></div>
           </button>
@@ -90,8 +97,11 @@ class Navbar extends React.Component {
           {filmList}
           </ul>    
           <i className="fa fa-search"></i>
+          {/* onClick={context.openDetails} */}
           </div>
       </nav>
+      )}
+      </AppContext.Consumer>
     );
   }
 };

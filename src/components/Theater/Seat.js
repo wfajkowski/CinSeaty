@@ -33,6 +33,7 @@ class Seat extends React.Component {
   };
 
   componentDidMount() {
+    allSelected = []
     this.setState({ coords: this.props.coords });
 
     // if (this.props.reservedSeats.length > 0) {

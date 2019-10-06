@@ -53,6 +53,7 @@ class Theather extends React.Component {
     axios.get("http://localhost:3001/api/reservations").then(res => {
       reservations = [...res.data];
       reservations.forEach(item => {
+        // getting ready to get programme from props
         // if (item.programme_id === this.props.programme_id) {
         item.seats.forEach(item => {
           this.setState({

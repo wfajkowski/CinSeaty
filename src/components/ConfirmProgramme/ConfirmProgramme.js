@@ -54,13 +54,6 @@ class ConfirmProgramme extends React.Component {
     };
   }
 
-  componentDidUpdate() {
-    if (this.state.redirect) {
-      console.log('poszedł update', this.props);
-      // this.props.closeConfirm();
-    }
-  }
-
   render() {
     console.log(this);
     console.log(this.props);

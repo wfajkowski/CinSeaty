@@ -8,12 +8,9 @@ const Reservation = () => {
   return (
     <>
     <AppContext.Consumer>
-      {context => () => {
-        context.closeConfirm();
-        return(
+      {context => (
         <Theather programme_id={context.programme_id}/>
-        )
-      }
+      )
       }
 
     </AppContext.Consumer>

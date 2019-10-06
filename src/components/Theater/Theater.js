@@ -82,7 +82,6 @@ class Theather extends React.Component {
   render() {
     if (!this.state.next) {
       return (
-<<<<<<< HEAD
         <div>
       <div className="bg"></div>
       <div className="bg bg2"></div>
@@ -96,19 +95,6 @@ class Theather extends React.Component {
             <i className="">Next</i>
           </button>
         </form></div>
-=======
-        <div className="theatre-container">
-          <div className="seats-container">{this.printRows()}</div>
-          <form onSubmit={this.onSubmit.bind(this)}>
-            <button
-              type="submit"
-              value="confirm"
-              className="theatre-next-button"
-            >
-              <i className="">Next</i>
-            </button>
-          </form>
->>>>>>> 7c98e0617fd5cfa307b6548135e8c9264a99dbd4
         </div>
       );
     }

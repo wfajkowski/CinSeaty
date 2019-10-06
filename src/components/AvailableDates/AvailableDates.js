@@ -6,18 +6,18 @@ class AvailableDates extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeButton: 'Dzisiaj'
+      activeButton: 'Today'
     };
   }
 
   handleClick = e => {
     const val =
-      e.target.innerHTML !== "Dzisiaj"
+      e.target.innerHTML !== "Today"
         ? e.target.innerHTML
         : Moment().format("D.M");
     this.setState({
       activeButton:
-        e.target.innerHTML !== "Dzisiaj"
+        e.target.innerHTML !== "Today"
           ? e.target.innerHTML
           : Moment().format("D.M")
     });
@@ -40,7 +40,7 @@ class AvailableDates extends React.Component {
             className="ui inverted button"
             key={item}
           >
-            {item === Moment().format("D.M") ? "Dzisiaj" : item}
+            {item === Moment().format("D.M") ? "Today" : item}
           </button>
         ))}
       </div>

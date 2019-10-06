@@ -29,8 +29,6 @@ class FilmList extends React.Component {
         this.setState({
           dates: filteredDates.slice(3,10)
         });
-        console.log(this.state.dates)
-
       });
     }
     

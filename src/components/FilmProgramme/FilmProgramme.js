@@ -13,24 +13,20 @@ class FilmProgramme extends React.Component {
 
   handleClick = e => {
     let chooseProgramme = e.target.getAttribute("programme_id");
-    let programmeIdKey = Object.keys(this.props.reservation)[0];
     this.setState({activeProgramme: chooseProgramme});
-    this.props.updateFn(`${this.props.reservation[programmeIdKey]}`, chooseProgramme);
+    this.props.updateFn("programme_id", chooseProgramme);
+    this.props.updateFn("activeMovie", this.props.movie);
+    this.props.openConfirm();
     console.log(this.props);
-    console.log("chuj", this.props.reservation.programme_id);
-    console.log("chuj", chooseProgramme);
-    console.log("chuj", Object.keys(this.props.reservation)[0]);
-    console.log(this.props.reservation);
   }
 
   render() {
-    console.log(this.props);
     return (
       <AppContext.Consumer>
         {context => (
           <div className={styles.filmProgramme}>
             <div className={styles.hours}>
-              <p>Seanse:</p>
+              <p>Showtimes:</p>
               <ul className={styles.ul}>
                 {this.props.programme.map(
                   item =>
@@ -41,8 +37,12 @@ class FilmProgramme extends React.Component {
                         key={item._id}
                         programme_id={item._id}
                       >
-                        <p programme_id={item._id}>{Moment(item.time).format("D.M")}</p>
-                        <p programme_id={item._id}>{Moment(item.time).format("HH:mm")}</p>
+                        <p programme_id={item._id}>
+                          {Moment(item.time).format("D.M")}
+                        </p>
+                        <p programme_id={item._id}>
+                          {Moment(item.time).format("HH:mm")}
+                        </p>
                       </li>
                     )
                 )}

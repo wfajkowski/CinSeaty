@@ -4,12 +4,13 @@ import AppContext from '../../context';
 import Theather from '../../components/Theater/Theater';
 
 
-const Reservation = () => {
+const Reservation = (props) => {
+  console.log(window.location.href);
   return (
     <>
     <AppContext.Consumer>
       {context => (
-        <Theather programme_id={context.reservation.programme_id}/>
+        <Theather programme_id={context.programme_id}/>
       )
       }
 

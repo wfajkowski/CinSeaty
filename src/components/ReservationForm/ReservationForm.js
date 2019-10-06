@@ -18,39 +18,57 @@ class ReservationForm extends React.Component {
       surname: null,
       email: null,
       telephone: null,
-      programme_id: null,
+      programme_id: this.props.programme_id,
       reservation: null,
       active: false,
       total: null
+      // reservation: {
+      //   programme_id: "5d9623e09142db405c99a22d",
+      //   seats: [
+      //     {
+      //       seat_id: "5d9624c58b7ae53ab4d299e6",
+      //       hall_id: 1,
+      //       ticket_id: "5d93b090c32d0709bc2c091a",
+      //       status: "reserved"
+      //     },
+      //     {
+      //       seat_id: "5d9624c58b7ae53ab4d299e8",
+      //       hall_id: 1,
+      //       ticket_id: "5d93b09fc32d0709bc2c091b",
+      //       status: "reserved"
+      //     }
+      //   ]
+      // }
     };
   }
 
   async componentDidMount() {
-    const programmeId = this.props.context.reservation.reservation.programme_id;
+    const programmeId = this.props.context.reservation.programme_id;
     let movieId;
     const reservation = Math.random().toString(36).substr(2, 10).toUpperCase();
     this.setState({ reservation });
+  console.log("programmeId", programmeId);
+  console.log(this.props);
+  if (programmeId){
+    await axios.get("http://localhost:3001/api/programmes/").then(res => {
+      const programme = res.data.filter(el => {
+        return el._id === programmeId;
+      });
+      console.log(programme, 'tutaj');
+      movieId = programme[0].movie_id;
+      const dateValue = programme[0].time;
+      const date = moment(dateValue).format("DD-MM-YYYY");
+      const time = moment(dateValue).format("HH:mm");
 
-    await axios
-      .get("http://localhost:3001/api/programmes/")
-      .then(res => {
-        const programme = (res.data).filter(el => {
-          return el._id === programmeId;
-        })
-        movieId = programme[0].movie_id;
-        const dateValue = programme[0].time;
-        const date = moment(dateValue).format("DD-MM-YYYY")
-        const time = moment(dateValue).format("HH:mm")
-
-        this.setState({
-          date: date,
-          time: time,
-          programme_id: programmeId,
-          datetime: dateValue
-        });
-        return res.data
-      })
-
+      this.setState({
+        date: date,
+        time: time,
+        programme_id: programmeId,
+        datetime: dateValue
+      });
+      return res.data;
+    });
+  
     await axios
       .get(`http://localhost:3001/api/movies/${movieId}`)
       .then(res => {
@@ -96,6 +114,7 @@ class ReservationForm extends React.Component {
       })
     };
     getSeats();
+    }
   };
 
   onChange(e) {
@@ -155,6 +174,8 @@ class ReservationForm extends React.Component {
   }
 
   render() {
+    console.log(this.props);
+    console.log(this.state);
     if (!this.state.active) {
       return (
         <div>
@@ -164,6 +185,7 @@ class ReservationForm extends React.Component {
         <div className={styles.formContainer}>
           <div className={styles.reservationInfoDiv}>
             <h3 className={styles.formHeader}>Reservation summary</h3>
+            <p>{this.state.programme_id}</p>
             <p>Title: {this.state.title}</p>
             <p>Screening date: {this.state.date}</p>
             <p>Screening time: {this.state.time}</p>

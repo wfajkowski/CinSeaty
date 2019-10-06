@@ -53,8 +53,9 @@ class FilmItem extends React.Component {
                   <h4>{this.props.title}</h4>
                   <FilmProgramme
                     programme={this.state.programme}
-                    {...this.props}
+                    movie={this.props}
                     updateFn={context.updateValue}
+                    openConfirm={context.openConfirm}
                     reservation={context.reservation}
                   />
                 </div>

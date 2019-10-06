@@ -15,7 +15,7 @@ class ReservationTickets extends React.Component {
     }
 
     async componentDidMount() {
-        const chosenSeats = this.props.reservation.reservation.seats;
+        const chosenSeats = this.props.seats;
 
         chosenSeats.forEach(seat => {
             const seatId = seat.seat_id;

@@ -18,12 +18,7 @@ class Root extends React.Component {
     activeDate: Moment().format("D.M"),
     isMovieDetailsOpen: false,
     reservation: {
-      programme_id: "5d9623e09142db405c99a22d",
-      seats: [{
-        seat_id: "5d9624c58b7ae53ab4d299e6"
-      }, {
-        seat_id: "5d9624c58b7ae53ab4d299e8"
-      }]
+      programme_id: "5d9623e09142db405c99a22d"
     }
   };
 

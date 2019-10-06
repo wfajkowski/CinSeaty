@@ -10,7 +10,8 @@ class Theather extends React.Component {
     reservedSeats: [],
     next: false,
     halls: [],
-    seats: []
+    seats: [],
+    programme_id: ""
   };
 
   printRows = () => {
@@ -46,22 +47,25 @@ class Theather extends React.Component {
       return row;
     });
   };
-
+ 
   componentDidMount() {
     let reservations;
     axios.get("http://localhost:3001/api/reservations").then(res => {
       reservations = [...res.data];
       reservations.forEach(item => {
+        // if (item.programme_id === this.props.programme_id) {
         item.seats.forEach(item => {
           this.setState({
             reservedSeats: [...this.state.reservedSeats, item.seat]
           });
         });
+        // }
       });
       axios.get("http://localhost:3001/api/halls").then(res => {
         this.setState({ halls: [...res.data] });
       });
     });
+    // this.setState({programme_id: this.props.programme_id})
   }
 
   idsGetter = ids => {

@@ -4,7 +4,7 @@ import "./MovieDetails.css";
 //import styles from "./MovieDetails.module.scss";
 
 const MovieDetails = (props) => {
-  console.log(props);
+  //console.log(props);
   let title = props.activeMovie.title;
   let trailer = props.activeMovie.trailer;
   let duration = props.activeMovie.duration;

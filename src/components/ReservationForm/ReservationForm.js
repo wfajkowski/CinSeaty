@@ -183,7 +183,6 @@ class ReservationForm extends React.Component {
         <div className={styles.formContainer}>
           <div className={styles.reservationInfoDiv}>
             <h3 className={styles.formHeader}>Reservation summary</h3>
-            <p>{this.state.programme_id}</p>
             <p>Title: {this.state.title}</p>
             <p>Screening date: {this.state.date}</p>
             <p>Screening time: {this.state.time}</p>

@@ -54,7 +54,7 @@
 @media only screen and (max-width: 767px) {
     .content {
         grid-template-columns: 6fr 1fr;
-        grid-template-rows: 50px 300px 100px 1fr;
+        grid-template-rows: 75px 300px 100px 1fr;
     }
     .title {
         grid-column: span 1;
